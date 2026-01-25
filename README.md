@@ -1,5 +1,5 @@
-# MICB 475: Data Science Reserach in Microbiology
-## Group 14
+# MICB 475: Data Science Research in Microbiology
+## Group 14 (Angela, Isabella, Sadaf, Lily, Trinity)
 
 ## Timeline ##
 
