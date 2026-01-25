@@ -16,7 +16,3 @@
 
 ## Lab Notebook
 
-
-
-Angela commit test
-
