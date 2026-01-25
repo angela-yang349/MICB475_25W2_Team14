@@ -1,2 +1,12 @@
-# MICB475_Team14
-MICB 475: Data Science Research in Microbiology
+# MICB 475: Data Science Reserach in Microbiology
+## Group 14
+
+## Timeline ##
+
+## Meeting Agenda and Meeting Minutes ##
+### January
+### February
+### March
+### April
+
+## Lab Notebook ##
