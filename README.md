@@ -9,6 +9,8 @@
 ### January
 
 #### January 27th, 2026
+Agenda: discuss the topics we individually found interesting
+
 Discussed 5 possible topics:
 -	Vaginal microbiome effect on a disease – con: find good dataset
 -	Alcohol vs cancer – possible con: is there enough data I the dataset?
