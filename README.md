@@ -16,6 +16,10 @@ Discussed 5 possible topics:
 -	Depression vs microbiome – con: find good dataset
 -	Infant anemia – con: thoroughly studied (look for a novel question)
 
+Conclusion:
+- most members were interested in vaginal microbiome and alcohol vs cancer
+- look for good vaginal microbiome datasets
+
 ### February
 
 #### February 3rd, 2026
