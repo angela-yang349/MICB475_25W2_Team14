@@ -1,5 +1,5 @@
 # January 27th, 2026
-### Agenda
+## Agenda
 * Discuss the topics we individually found interesting
   * Vaginal microbiome effect on a disease – con: find good dataset
   * Alcohol vs cancer – possible con: is there enough data I the dataset?
@@ -7,8 +7,8 @@
   * Depression vs microbiome – con: find good dataset
   * Infant anemia – con: thoroughly studied (need to look for a novel question)
 
-### Conclusions
+## Conclusions
 * most members were interested in vaginal microbiome and alcohol vs cancer
 
-### To-Do
+## To-Do
 * each of us look for good datasets in our topic of interest or look into novel research questions if dataset already exists

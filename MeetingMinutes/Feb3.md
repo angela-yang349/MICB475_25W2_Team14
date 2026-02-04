@@ -1,5 +1,5 @@
 # February 3rd, 2026
-### Agenda
+## Agenda
 * Discussion of project topics:
   * Vaginosis dataset
     * Very small dataset
@@ -13,25 +13,25 @@
     * Will need to recreate manifest and metadata without the rrms patients
     * Sample size concern (might be too small) with certain treatments
 
-### Conclusions
+## Conclusions
 * Collectively decided on MS dataset, looking into treatment differences in severe MS patients (SPMS and PPMS)
 
-### Discussion
+## Discussion
 * Ms Project Pipeline:
-  1. Processing
-    a. Remove RRMS samples from metadata and manifest files
-  2. QIIME pipeline
-  3. Diversity metrics
-    a. Keep SPMS and PPMS separate then look at different treatments within each group vs. non-treated
-    b. Could bin treatments that have the same significance
-  4. Core microbiome
-    a. gives venn diagram of microbes that are different and shared between groups
-  5. Indicator taxa
-    a. gives table of which microbes are strongly associated with treatment vs. non-treatment in both groups
-    b. Can do literature search to see if the microbes are pathogenic or beneficial
-  6. Deseq (depends if shannon’s diversity or evenness is significant) or functional analysis (only if there is significant indicator taxa of microbes that are very functionally different and helps to predict which pathways are up- or downregulated)
+  * 1) Processing
+    * Remove RRMS samples from metadata and manifest files
+  * 2) QIIME pipeline
+  * 3) Diversity metrics
+    * Keep SPMS and PPMS separate then look at different treatments within each group vs. non-treated
+    * Could bin treatments that have the same significance
+  * 4) Core microbiome
+    * gives venn diagram of microbes that are different and shared between groups
+  * 5) Indicator taxa
+    * gives table of which microbes are strongly associated with treatment vs. non-treatment in both groups
+    * can do literature search to see if the microbes are pathogenic or beneficial
+  * 6) Deseq (depends if shannon’s diversity or evenness is significant) or functional analysis (only if there is significant indicator taxa of microbes that are very functionally different and helps to predict which pathways are up- or downregulated)
 
-### To-do
+## To-do
 * For data processing:
   * In R, before importing the data, first sort the MS dataset from the server and copy it into our folder (keep it in .tsv file format)
   * Then match the sorted sample IDs to filter for the same samples in the manifest file
