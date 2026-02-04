@@ -1,5 +1,5 @@
-#February 3rd, 2026
-###Agenda###
+# February 3rd, 2026
+### Agenda
 * Discussion of project topics:
   * Vaginosis dataset
     * Very small dataset
@@ -13,10 +13,10 @@
     * Will need to recreate manifest and metadata without the rrms patients
     * Sample size concern (might be too small) with certain treatments
 
-###Conclusions###
+### Conclusions
 * Collectively decided on MS dataset, looking into treatment differences in severe MS patients (SPMS and PPMS)
 
-###Discussion###
+### Discussion
 * Ms Project Pipeline:
   1. Processing
     a. Remove RRMS samples from metadata and manifest files
@@ -31,7 +31,7 @@
     b. Can do literature search to see if the microbes are pathogenic or beneficial
   6. Deseq (depends if shannon’s diversity or evenness is significant) or functional analysis (only if there is significant indicator taxa of microbes that are very functionally different and helps to predict which pathways are up- or downregulated)
 
-###To-do###
+### To-do
 * For data processing:
   * In R, before importing the data, first sort the MS dataset from the server and copy it into our folder (keep it in .tsv file format)
   * Then match the sorted sample IDs to filter for the same samples in the manifest file
