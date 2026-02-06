@@ -19,7 +19,7 @@
 ## Discussion
 #### Ms Project Pipeline:
 1. Processing
-    * Remove RRMS samples from metadata and manifest files
+    * Remove RRMS samples from metadata and manifest files (use sample IDs to match)
 2. QIIME pipeline
 3. Diversity metrics
     * Keep SPMS and PPMS separate then look at different treatments within each group vs. non-treated
