@@ -1,9 +1,9 @@
 # February 10th, 2026
 ## Agenda
-  * MS dataset (already exists in server)
-    * Dataset is massive (will take a long time to process)
-    * Will need to recreate manifest and metadata without the rrms patients
-    * Sample size concern (might be too small) with certain treatments
+  * Completed work:
+  * Upcoming work:
+  * Questions:
+    * 
 
 ## Discussion
 1. 
