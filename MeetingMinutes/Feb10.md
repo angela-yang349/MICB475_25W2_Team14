@@ -5,23 +5,11 @@
     * Will need to recreate manifest and metadata without the rrms patients
     * Sample size concern (might be too small) with certain treatments
 
+## Discussion
+1. 
+
 ## Conclusions
 * Collectively decided on MS dataset, looking into treatment differences in severe MS patients (SPMS and PPMS)
-
-## Discussion
-#### Ms Project Pipeline:
-1. Processing
-    * Remove RRMS samples from metadata and manifest files (use sample IDs to match)
-2. QIIME pipeline
-3. Diversity metrics
-    * Keep SPMS and PPMS separate then look at different treatments within each group vs. non-treated
-    * Could bin treatments that have the same significance
-4. Core microbiome
-    * gives venn diagram of microbes that are different and shared between groups
-5. Indicator taxa
-    * gives table of which microbes are strongly associated with treatment vs. non-treatment in both groups
-    * can do literature search to see if the microbes are pathogenic or beneficial
-6. Deseq (depends if shannon’s diversity or evenness is significant) or functional analysis (only if there is significant indicator taxa of microbes that are very functionally different and helps to predict which pathways are up- or downregulated)
 
 ## To-do
 1. For data processing:
