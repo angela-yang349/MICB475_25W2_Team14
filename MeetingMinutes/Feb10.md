@@ -43,7 +43,6 @@
 * 
 
 ## To-do
-1. To Do
 Everything needed for phyloseq object: metadata, phylo tree, filtered table, taxonomy classification
 
 
