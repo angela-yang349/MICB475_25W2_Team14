@@ -7,8 +7,10 @@
     * Diversity metrics
       * Keep SPMS and PPMS separate then look at different treatments within each group vs. non-treated
       * Could bin treatments that have the same significance
+    * Team proposal 
   * Questions:
     * How should we determine sampling depth?
+    * Team proposal
 
 ## Discussion
 1. 
