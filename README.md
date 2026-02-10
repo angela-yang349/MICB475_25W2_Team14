@@ -11,7 +11,7 @@
 [January 27](/MeetingMinutes/Jan27.md)
 
 ### February
-[February 3](/MeetingMinutes/Feb3.md) | [February 10](/MeetingMinutes/Feb10.md) | [February 17] | [February 24]
+[February 3](/MeetingMinutes/Feb3.md) | [February 10](/MeetingMinutes/Feb10.md) | [February 24]
 
 ### March
 [March 3] | [March 10] | [March 17] | [March 24] | [March 31]
@@ -20,4 +20,6 @@
 [April 7] | [April 14]
 
 ## Lab Notebook
-
+* [Chap.1](/LabNotebook/Chap1/Chap1.md) - Data Pre-processing
+* [Chap.2](/LabNotebook/Chap2/Chap2.md) - QIIME2 pipeline
+* [Chap.3](/LabNotebook/Chap3/Chap3.md) - 
