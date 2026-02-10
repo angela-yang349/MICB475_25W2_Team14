@@ -35,6 +35,7 @@
 * QIIME processing might not need to be part of proposal (examples have done aim 1 = diversity, 1a is QIIME)
 * Metadata - sample IDs, characteristics like age, which disease they have
 * Manifest -  sequences, corresponds to an ID
+* Remove mitochondria and chloroplasts then do trees and then rarefaction done in QIIME
 
 
 
@@ -43,10 +44,7 @@
 
 ## To-do
 1. To Do
-* Taxonomy classification
-* ASVs
-* Feature table
-* Phylo tree
-* Everything needed for phyloseq object
+Everything needed for phyloseq object: metadata, phylo tree, filtered table, taxonomy classification
+
 
 - [ ] 
