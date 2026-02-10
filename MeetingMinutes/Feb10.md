@@ -29,13 +29,24 @@
 * Working on rarefraction part
 3. Meeting During Reading Break?
 * Either a Zoom meeting later in the week or we email Ritu questions from our own separate meeting
-4. To Do
-* Taxonomy classification
+4. Analysis
+* Indicator species - looking for species that are present in one group and not present in another group, generally no threshold, look at how the abundance of this species changes, down/upregulation of species
+* Can still move forward with rest of analysis if diversity metrics show nothing
+* QIIME processing might not need to be part of proposal (examples have done aim 1 = diversity, 1a is QIIME)
+* Metadata - sample IDs, characteristics like age, which disease they have
+* Manifest -  sequences, corresponds to an ID
+
 
 
 ## Conclusions
 * 
 
 ## To-do
-1. 
+1. To Do
+*Taxonomy classification
+*ASVs
+*Feature table
+*Phylo tree
+*Everything needed for phyloseq object
+
 - [ ] 
