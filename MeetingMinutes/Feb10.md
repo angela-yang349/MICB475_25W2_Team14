@@ -43,10 +43,10 @@
 
 ## To-do
 1. To Do
-*Taxonomy classification
-*ASVs
-*Feature table
-*Phylo tree
-*Everything needed for phyloseq object
+* Taxonomy classification
+* ASVs
+* Feature table
+* Phylo tree
+* Everything needed for phyloseq object
 
 - [ ] 
