@@ -40,10 +40,11 @@
 
 
 ## Conclusions
-* 
+* Working on proposal, basic data processing and getting organized on GitHub
 
 ## To-do
-Everything needed for phyloseq object: metadata, phylo tree, filtered table, taxonomy classification
-
+* Everything needed for phyloseq object: metadata, phylo tree, filtered table, taxonomy classification
+* Organize our GitHub and lab notebook
+* Work on proposal
 
 - [ ] 
