@@ -61,14 +61,34 @@ qiime phylogeny align-to-tree-mafft-fasttree \
   --o-tree unrooted-tree.qza \
   --o-rooted-tree rooted-tree.qza
 
-# Alpha-rarefaction (still determining max depth)
+# Alpha-rarefaction (max depth based on what the terminal told me)
 qiime diversity alpha-rarefaction \
   --i-table table.qza \
   --i-phylogeny rooted-tree.qza \
-  --p-max-depth 31000\
+  --p-max-depth 28274\
   --m-metadata-file /data/project_2/ms_metadata_no_rrms.tsv \
   --o-visualization alpha-rarefaction.qzv
 
+qiime tools export \
+--input-path /data/project_2/table-no-mitochondria-no-chloroplast.qza \
+--output-path table_export 
+
+biom convert \
+-i feature-table.biom \
+--to-tsv \
+-o feature-table.txt
+
+qiime tools export \
+--input-path /data/project_2/taxonomy.qza \
+--output-path taxonomy_export
+
+qiime tools export \
+--input-path /data/project_2/rooted-tree.qza \
+--output-path tree_export
+
+
+
+# this one is probably not necessary since we'll do diversity stuff on R
 qiime diversity core-metrics-phylogenetic \
   --i-phylogeny rooted-tree.qza \
   --i-table table-no-mitochondria-no-chloroplast.qza \
