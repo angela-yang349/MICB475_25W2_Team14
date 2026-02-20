@@ -69,6 +69,14 @@ qiime diversity alpha-rarefaction \
   --m-metadata-file /data/project_2/ms_metadata_no_rrms.tsv \
   --o-visualization alpha-rarefaction.qzv
 
+#second alpha rarefaction attempt - feb 20
+qiime diversity alpha-rarefaction \
+  --i-table table-no-mitochondria-no-chloroplast.qza \
+  --i-phylogeny rooted-tree.qza \
+  --p-max-depth 28263\
+  --m-metadata-file /data/project_2/ms_metadata_no_rrms.tsv \
+  --o-visualization alpha-rarefaction-2.qzv
+
 qiime tools export \
 --input-path /data/project_2/table-no-mitochondria-no-chloroplast.qza \
 --output-path table_export 
