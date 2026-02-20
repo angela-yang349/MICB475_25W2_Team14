@@ -92,6 +92,6 @@ qiime tools export \
 qiime diversity core-metrics-phylogenetic \
   --i-phylogeny rooted-tree.qza \
   --i-table table-no-mitochondria-no-chloroplast.qza \
-  --p-sampling-depth 55\
+  --p-sampling-depth 3039\
   --m-metadata-file /data/project_2/ms_metadata_no_rrms.tsv \
   --output-dir core-metrics-results
