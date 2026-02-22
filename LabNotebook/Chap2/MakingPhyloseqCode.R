@@ -61,3 +61,6 @@ ms_phyloseq <- phyloseq(OTU, META, TAX, tree)
 
 # save file
 save(ms_phyloseq, file="LabNotebook/Chap2/ms_phyloseq.RData")
+
+# make rarefaction curve
+
