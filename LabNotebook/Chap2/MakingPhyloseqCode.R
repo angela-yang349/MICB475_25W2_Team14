@@ -63,4 +63,8 @@ ms_phyloseq <- phyloseq(OTU, META, TAX, tree)
 save(ms_phyloseq, file="LabNotebook/Chap2/ms_phyloseq.RData")
 
 # make rarefaction curve
-
+rarecurve(t(as.data.frame(otu_table(ms_phyloseq))),
+          cex = 0.1,
+          ylab = "Observed features")
+abline(v = 6215, lty = 2, lwd = 2)
+ms_rare <- rarefy_even_depth(ms_phyloseq, rngseed = 1, sample.size = 20000)
