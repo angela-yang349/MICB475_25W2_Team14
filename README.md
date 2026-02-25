@@ -11,7 +11,7 @@
 [January 27](/MeetingMinutes/Jan27.md)
 
 ### February
-[February 3](/MeetingMinutes/Feb3.md) | [February 10](/MeetingMinutes/Feb10.md) | [February 24]
+[February 3](/MeetingMinutes/Feb3.md) | [February 10](/MeetingMinutes/Feb10.md) | [February 24](/MeetingMinutes/Feb24.md)
 
 ### March
 [March 3] | [March 10] | [March 17] | [March 24] | [March 31]
