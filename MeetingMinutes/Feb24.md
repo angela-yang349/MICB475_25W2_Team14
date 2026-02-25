@@ -37,17 +37,17 @@
     *For now, try to include the healthy group (include everything)
 * Statistical methods
   * Indicator species analysis
-   * May need to adjust abundance and and prevalence
+    * May need to adjust abundance and and prevalence
   * Alpha diversity tells you if there’s significance in an individual group. Shannon diversity – within samples within one category
-   * Kruskal-Wallis statistical test helps to compare the three groups (treated vs untreated vs healthy) tells you if a group is more diverse than the other?
-   * Alpha first
-   * Do shannon + kruskal-wallis for all alpha diversity analyses
+    * Kruskal-Wallis statistical test helps to compare the three groups (treated vs untreated vs healthy) tells you if a group is more diverse than the other?
+    * Alpha first
+    * Do shannon + kruskal-wallis for all alpha diversity analyses
   * Beta diversity is a direct comparison between the three 
-   * Beta second
-   * First time treated vs untreated, second time individual treatments 
-   * Can do 2 sets of alpha diversity
-   * Then proceed with ones that show a difference
-   * Maybe binn certain treatments if they’re similar enough so fewer conditions and more samples within conditions
+    * Beta second
+    * First time treated vs untreated, second time individual treatments 
+    * Can do 2 sets of alpha diversity
+    * Then proceed with ones that show a difference
+    * Maybe binn certain treatments if they’re similar enough so fewer conditions and more samples within conditions
 * Removing confounding variables
   * If you see an extreme sample (outlier), remove that one sample manually 
   * Eg., look at common known factors that can change the microbiome (age), skim through to see if any outliers in that parameter compared to others. If there’s something extreme, remove that
