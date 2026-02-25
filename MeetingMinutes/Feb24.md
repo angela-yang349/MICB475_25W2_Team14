@@ -13,10 +13,10 @@
 
 ## Discussion
 ### Ritu’s updates & suggestions
- * Don’t wait to complete the earlier analysis before starting. Once you have the phyloseq object, you can begin the later analysis 
-  * Run parallel analyses 
+* Don’t wait to complete the earlier analysis before starting. Once you have the phyloseq object, you can begin the later analysis 
+   * Run parallel analyses 
 * March 13/23 evelyn will join for 2 meetings so get most of the analysis done by that time – will be easier to discuss & can go over results/have a story 
- * Avoid waiting another week to get results 
+   * Avoid waiting another week to get results 
 * Start Google Slides; add plots onto that so all plots will be in the same place and easy to share with Ritu & Evelyn
  * Make them prettier later on for the presentation
 * Next week: getting proposals back
@@ -27,14 +27,14 @@
 * Will be running diversity analyses 
  * Use healthy controls as a baseline to see whether PMS treated groups and healthy microbiome groups converge? 
  * 3-way analysis – all 3 together 
-  * Analysis is the same
-  * Just have another group compared to the treated and untreated group
-  * Is the treated group becoming more similar to the healthy one?
+   * Analysis is the same
+   * Just have another group compared to the treated and untreated group
+   * Is the treated group becoming more similar to the healthy one?
   * DESEQ is a pairwise comparison
-   * Treated vs untreated
-   * Treated vs healthy
+    * Treated vs untreated
+    * Treated vs healthy
   * Venn diagram from core microbiome
-   *For now, try to include the healthy group (include everything)
+    *For now, try to include the healthy group (include everything)
 * Statistical methods
   * Indicator species analysis
    * May need to adjust abundance and and prevalence
