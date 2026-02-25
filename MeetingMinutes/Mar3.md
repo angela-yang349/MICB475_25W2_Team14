@@ -1,10 +1,10 @@
 # February 3rd, 2026
 ## Agenda
-*Completed work:
+* Completed work:
 
-*Upcoming work:
+* Upcoming work:
 
-*Questions:
+* Questions:
 
 
 ## Conclusions
