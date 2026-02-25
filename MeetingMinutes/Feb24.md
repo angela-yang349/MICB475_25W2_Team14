@@ -18,10 +18,10 @@
 * March 13/23 evelyn will join for 2 meetings so get most of the analysis done by that time – will be easier to discuss & can go over results/have a story 
    * Avoid waiting another week to get results 
 * Start Google Slides; add plots onto that so all plots will be in the same place and easy to share with Ritu & Evelyn
- * Make them prettier later on for the presentation
+  * Make them prettier later on for the presentation
 * Next week: getting proposals back
- * Will get to revise and incorporate the revisions to get some points back
- * Can go over revisions in next weeks meeting (march 3rd (?))
+  * Will get to revise and incorporate the revisions to get some points back
+  * Can go over revisions in next weeks meeting (march 3rd (?))
 
 ### Currently
 * Will be running diversity analyses 
@@ -60,5 +60,5 @@
   * If not enough time, stick with the table, otherwise can have heatmap 
 
 ### Next steps:
-Isabella: look at beta between SSMS and PPMS and see if we bin into PMS
-Angela & Sadaf: Alpha and beta diversity of treated and untreated
+* Isabella: look at beta between SSMS and PPMS and see if we bin into PMS
+* Angela & Sadaf: Alpha and beta diversity of treated and untreated
