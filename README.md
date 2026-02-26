@@ -6,7 +6,8 @@
 * Project 2 proposal deadline: Feb. 22
 * Draft manuscript deadline: 
 * Final revised manuscript deadline: 
-<img src="/Meeting_minutes/micb475_timeline.png" >
+
+![Timeline](/Meeting_minutes/Timeline.png)
 
 ## Meeting Agenda and Meeting Minutes
 
