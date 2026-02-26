@@ -7,7 +7,7 @@
 * Draft manuscript deadline: 
 * Final revised manuscript deadline: 
 
-![Timeline](/Meeting_minutes/Timeline.png)
+![Timeline](/MeetingMinutes/Timeline.png)
 
 ## Meeting Agenda and Meeting Minutes
 
