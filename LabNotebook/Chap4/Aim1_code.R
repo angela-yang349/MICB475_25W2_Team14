@@ -1,4 +1,4 @@
-#load the packages
+# load packages
 library(tidyverse)
 library(phyloseq)
 library(ape)
@@ -9,37 +9,163 @@ library(picante)
 load("LabNotebook/Chap3/ms_phyloseq.RData")
 load("LabNotebook/Chap3/ms_rare.RData")
 
-# remove control samples
-ms_rare_no_ctrl <- subset_samples(ms_rare, disease_course != "Control")
+#### AIM 1 PRELIMINARY: Beta diversity SPMS vs PPMS (no controls) ####
 
-#### Beta diversity of SPMS vs. PPMS (no control)#####
-wu_no_ctrl_distance <- distance(ms_rare_no_ctrl, method="wunifrac")
+# Remove control samples for PMS-only analyses
+ms_rare_pms_only <- subset_samples(ms_rare, disease_course != "Control")
 
-wu_no_ctrl_pcoa <- ordinate(ms_rare_no_ctrl, method="PCoA", distance=wu_no_ctrl_distance)
+pms_only_wunifrac_dist <- distance(ms_rare_pms_only, method = "wunifrac")
 
-pms_no_ctrl_pcoa <- plot_ordination(ms_rare_no_ctrl, wu_no_ctrl_pcoa, color = "disease_course") +
-  labs(col = "Disease Course") +
+pms_only_wunifrac_pcoa <- ordinate(ms_rare_pms_only, 
+                                   method = "PCoA", 
+                                   distance = pms_only_wunifrac_dist)
+
+spms_ppms_pcoa_plot <- plot_ordination(ms_rare_pms_only, 
+                                       pms_only_wunifrac_pcoa, 
+                                       color = "disease_course") +
+  labs(color = "Disease Course",
+       title = "Beta Diversity PCoA: SPMS vs PPMS") +
   theme_classic()
-pms_no_ctrl_pcoa
+spms_ppms_pcoa_plot
 
-ggsave("LabNotebook/Chap4/beta_SPMSandPPMS_pcoa.png"
-       , pms_no_ctrl_pcoa
-       , height=4, width=5)
+#ggsave("LabNotebook/Chap4/spms_ppms_wunifrac_pcoa.png",
+       spms_ppms_pcoa_plot,
+       height = 4, width = 5)
 
-PMS_data <- data.frame(sample_data(ms_rare_no_ctrl))
-adonis2(wu_no_ctrl_distance ~ disease_course, data=PMS_data)
+# PERMANOVA test (SPMS vs PPMS)
+pms_only_metadata <- data.frame(sample_data(ms_rare_pms_only))
 
-#### Alpha diversity (Shannon Index) of treated vs. untreated PMS (with control) #####
-PMS_richness_plot <-plot_richness(ms_rare, x = "treatment_status", measures = c("Shannon")) +
+spms_ppms_permanova <- adonis2(pms_only_wunifrac_dist ~ disease_course, 
+                               data = pms_only_metadata,
+                               permutations = 999)
+print(spms_ppms_permanova)
+
+#### AIM 1: Alpha diversity treated vs untreated PMS (with controls) ####
+treatment_alpha_plot <- plot_richness(ms_rare, 
+                                      x = "treatment_status", 
+                                      measures = c("Shannon")) +
   xlab("Treatment Status") +
   ylab("Shannon Diversity Index") +
   geom_boxplot() +
-  ggtitle("Shannon Diversity of PMS Patients and Healthy Controls")
+  ggtitle("Alpha Diversity: Treated vs Untreated PMS and Controls") +
+  theme_classic()
+treatment_alpha_plot
 
-PMS_richness_plot
+#ggsave(filename = "LabNotebook/Chap4/treatment_shannon_boxplot.png",
+       treatment_alpha_plot,
+       height = 4, width = 6)
 
-ggsave(filename = "LabNotebook/Chap4/alpha_PMS_plot.png",
-       PMS_richness_plot,
-       height=4, width=6)
+# Kruskal-Wallis test
 
-#### Beta diversity of treated vs. untreated PMS (with control ) #####
+
+#### AIM 1: Beta diversity treated vs untreated PMS (with controls) ####
+treatment_wunifrac_dist <- distance(ms_rare, method = "wunifrac")
+
+treatment_wunifrac_pcoa <- ordinate(ms_rare, 
+                                    method = "PCoA", 
+                                    distance = treatment_wunifrac_dist)
+
+treatment_beta_plot <- plot_ordination(ms_rare, 
+                                       treatment_wunifrac_pcoa, 
+                                       color = "treatment_status") +
+  labs(color = "Treatment Status", 
+       title = "Beta Diversity: Treated vs Untreated PMS vs. Healthy Controls",
+       subtitle = "PCoA with Weighted UniFrac Distance") +
+  theme_classic() +
+  theme(legend.position = "right")
+treatment_beta_plot
+
+#ggsave("LabNotebook/Chap4/treatment_wunifrac_pcoa.png", 
+       treatment_beta_plot, 
+       width = 8, 
+       height = 6, 
+       dpi = 300)
+
+# PERMANOVA test (treatment effect)
+metadata_all_df <- data.frame(sample_data(ms_rare))
+
+treatment_permanova <- adonis2(treatment_wunifrac_dist ~ treatment_status, 
+                               data = metadata_all_df,
+                               permutations = 999)
+print(treatment_permanova)
+
+# Pairwise PERMANOVA comparisons (if overall test is significant)
+if(treatment_permanova$`Pr(>F)`[1] < 0.05) {
+  
+  cat("\n=== Running Pairwise PERMANOVA Comparisons ===\n")
+  
+  # Treated PMS vs Untreated PMS (both have disease_course = PPMS or SPMS)
+  ms_rare_pms_only <- subset_samples(ms_rare, disease_course != "Control")
+  pms_only_dist <- distance(ms_rare_pms_only, method = "wunifrac")
+  pms_only_metadata <- data.frame(sample_data(ms_rare_pms_only))
+  
+  treated_vs_untreated <- adonis2(pms_only_dist ~ treatment_status, 
+                                  data = pms_only_metadata, 
+                                  permutations = 999)
+  cat("\n=== Treated PMS vs Untreated PMS ===\n")
+  print(treated_vs_untreated)
+  
+  # Healthy Control vs Untreated PMS
+  ms_rare_ctrl_untreated <- subset_samples(ms_rare, 
+                                           disease_course == "Control" | treatment_status == "Untreated")
+  ctrl_untreated_dist <- distance(ms_rare_ctrl_untreated, method = "wunifrac")
+  ctrl_untreated_metadata <- data.frame(sample_data(ms_rare_ctrl_untreated))
+  
+  # Create a combined variable for this comparison
+  ctrl_untreated_metadata$comparison_group <- ifelse(ctrl_untreated_metadata$disease_course == "Control",
+                                                     "Healthy Control",
+                                                     "Untreated PMS")
+  
+  ctrl_vs_untreated <- adonis2(ctrl_untreated_dist ~ comparison_group, 
+                               data = ctrl_untreated_metadata, 
+                               permutations = 999)
+  cat("\n=== Healthy Control vs Untreated PMS ===\n")
+  print(ctrl_vs_untreated)
+  
+  # Healthy Control vs Treated PMS
+  ms_rare_ctrl_treated <- subset_samples(ms_rare, 
+                                         disease_course == "Control" | treatment_status == "Treated")
+  ctrl_treated_dist <- distance(ms_rare_ctrl_treated, method = "wunifrac")
+  ctrl_treated_metadata <- data.frame(sample_data(ms_rare_ctrl_treated))
+  
+  # Create a combined variable for this comparison
+  ctrl_treated_metadata$comparison_group <- ifelse(ctrl_treated_metadata$disease_course == "Control",
+                                                   "Healthy Control",
+                                                   "Treated PMS")
+  
+  ctrl_vs_treated <- adonis2(ctrl_treated_dist ~ comparison_group, 
+                             data = ctrl_treated_metadata, 
+                             permutations = 999)
+  cat("\n=== Healthy Control vs Treated PMS ===\n")
+  print(ctrl_vs_treated)
+  
+  # Compile results
+  pairwise_results <- data.frame(
+    Comparison = c("Treated vs Untreated PMS", 
+                   "Healthy Control vs Untreated PMS", 
+                   "Healthy Control vs Treated PMS"),
+    R2 = c(treated_vs_untreated$R2[1], 
+           ctrl_vs_untreated$R2[1], 
+           ctrl_vs_treated$R2[1]),
+    F_statistic = c(treated_vs_untreated$F[1], 
+                    ctrl_vs_untreated$F[1], 
+                    ctrl_vs_treated$F[1]),
+    p_value = c(treated_vs_untreated$`Pr(>F)`[1], 
+                ctrl_vs_untreated$`Pr(>F)`[1], 
+                ctrl_vs_treated$`Pr(>F)`[1])
+  )
+  
+  # Bonferroni correction for multiple comparisons
+  pairwise_results$p_adjusted <- p.adjust(pairwise_results$p_value, method = "bonferroni")
+  
+  cat("\n=== Pairwise Comparisons Summary ===\n")
+  print(pairwise_results)
+  
+  # Save results
+  write.csv(pairwise_results, 
+            "LabNotebook/Chap4/treatment_pairwise_permanova.csv", 
+            row.names = FALSE)
+  
+} else {
+  cat("\n=== Overall PERMANOVA not significant, skipping pairwise comparisons ===\n")
+}
