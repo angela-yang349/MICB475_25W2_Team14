@@ -4,6 +4,7 @@ library(phyloseq)
 library(ape)
 library(vegan)
 library(picante)
+library(ggsignif)
 
 # load in data
 load("LabNotebook/Chap3/ms_phyloseq.RData")
@@ -28,9 +29,10 @@ spms_ppms_pcoa_plot <- plot_ordination(ms_rare_pms_only,
   theme_classic()
 spms_ppms_pcoa_plot
 
+##only need to run the save codes once each
 #ggsave("LabNotebook/Chap4/spms_ppms_wunifrac_pcoa.png",
-       spms_ppms_pcoa_plot,
-       height = 4, width = 5)
+       #spms_ppms_pcoa_plot,
+       #height = 4, width = 5)
 
 # PERMANOVA test (SPMS vs PPMS)
 pms_only_metadata <- data.frame(sample_data(ms_rare_pms_only))
@@ -40,6 +42,8 @@ spms_ppms_permanova <- adonis2(pms_only_wunifrac_dist ~ disease_course,
                                permutations = 999)
 print(spms_ppms_permanova)
 
+
+
 #### AIM 1: Alpha diversity treated vs untreated PMS (with controls) ####
 treatment_alpha_plot <- plot_richness(ms_rare, 
                                       x = "treatment_status", 
@@ -47,15 +51,30 @@ treatment_alpha_plot <- plot_richness(ms_rare,
   xlab("Treatment Status") +
   ylab("Shannon Diversity Index") +
   geom_boxplot() +
+  geom_point() +
   ggtitle("Alpha Diversity: Treated vs Untreated PMS and Controls") +
   theme_classic()
 treatment_alpha_plot
 
 #ggsave(filename = "LabNotebook/Chap4/treatment_shannon_boxplot.png",
-       treatment_alpha_plot,
-       height = 4, width = 6)
+       #treatment_alpha_plot,
+       #height = 4, width = 6)
 
-# Kruskal-Wallis test
+### Statistical test - Kruskal-Wallis rank sum test
+#first extract info
+Aim1_richness_estimate <- estimate_richness(ms_rare, 
+                                            measures = c("Observed", "Chao1", "ACE", "Shannon", "Simpson", "InvSimpson"))
+Aim1_alpha_samp_dat <- sample_data(ms_rare)
+Aim1_alpha_samp_and_richness <- data.frame(Aim1_alpha_samp_dat, Aim1_richness_estimate)
+
+view(Aim1_alpha_samp_and_richness)
+
+#run Kruskal-Wallis rank sum test
+kruskal_treatment_status <- kruskal.test( Shannon ~ treatment_status, data = Aim1_alpha_samp_and_richness)
+kruskal_treatment_status
+
+#none of these differences are significant since p=0.2533 (not less than 0.05), thus further analysis is not needed
+
 
 
 #### AIM 1: Beta diversity treated vs untreated PMS (with controls) ####
