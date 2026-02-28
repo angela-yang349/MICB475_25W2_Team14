@@ -188,3 +188,4 @@ if(treatment_permanova$`Pr(>F)`[1] < 0.05) {
 } else {
   cat("\n=== Overall PERMANOVA not significant, skipping pairwise comparisons ===\n")
 }
+
