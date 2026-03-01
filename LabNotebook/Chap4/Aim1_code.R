@@ -95,10 +95,10 @@ treatment_beta_plot <- plot_ordination(ms_rare,
 treatment_beta_plot
 
 #ggsave("LabNotebook/Chap4/treatment_wunifrac_pcoa.png", 
-       treatment_beta_plot, 
-       width = 8, 
-       height = 6, 
-       dpi = 300)
+       #treatment_beta_plot, 
+       #width = 8, 
+       #height = 6, 
+       #dpi = 300)
 
 # PERMANOVA test (treatment effect)
 metadata_all_df <- data.frame(sample_data(ms_rare))
@@ -210,6 +210,6 @@ if(treatment_permanova$`Pr(>F)`[1] < 0.05) {
   cat("Pairwise comparisons not performed.\n")
 }
 
-#write.csv(pairwise_results, 
+write.csv(pairwise_results, 
           "LabNotebook/Chap4/treatment_pairwise_permanova.csv", 
           row.names = FALSE)
