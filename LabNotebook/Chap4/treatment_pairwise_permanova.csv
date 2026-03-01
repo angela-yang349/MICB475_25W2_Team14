@@ -1,4 +1,4 @@
-"Comparison","R2","F_statistic","p_value","p_adjusted"
-"Treated vs Untreated PMS",0.00981962718006171,1.0908709356969,0.337,1
-"Healthy Control vs Untreated PMS",0.00408932200054148,2.19266445930238,0.058,0.174
-"Healthy Control vs Treated PMS",0.005682893078467,2.76624049896296,0.025,0.075
+"Comparison","R2","F_statistic","p_value","p_fdr","significant_fdr"
+"Treated vs Untreated PMS",0.00981962718006171,1.0908709356969,0.317,0.317,"No"
+"Healthy Control vs Untreated PMS",0.00408932200054148,2.19266445930238,0.051,0.0765,"No"
+"Healthy Control vs Treated PMS",0.005682893078467,2.76624049896296,0.028,0.0765,"No"

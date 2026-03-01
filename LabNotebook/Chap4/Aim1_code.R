@@ -37,11 +37,11 @@ spms_ppms_pcoa_plot
 # PERMANOVA test (SPMS vs PPMS)
 pms_only_metadata <- data.frame(sample_data(ms_rare_pms_only))
 
+set.seed(123)
 spms_ppms_permanova <- adonis2(pms_only_wunifrac_dist ~ disease_course, 
                                data = pms_only_metadata,
                                permutations = 999)
 print(spms_ppms_permanova)
-
 
 
 #### AIM 1: Alpha diversity treated vs untreated PMS (with controls) ####
@@ -103,10 +103,15 @@ treatment_beta_plot
 # PERMANOVA test (treatment effect)
 metadata_all_df <- data.frame(sample_data(ms_rare))
 
+set.seed(123)
 treatment_permanova <- adonis2(treatment_wunifrac_dist ~ treatment_status, 
                                data = metadata_all_df,
                                permutations = 999)
 print(treatment_permanova)
+
+# Save overall PERMANOVA results
+write.csv(as.data.frame(treatment_permanova),
+          "LabNotebook/Chap4/treatment_permanova_results.csv")
 
 # Pairwise PERMANOVA comparisons (if overall test is significant)
 if(treatment_permanova$`Pr(>F)`[1] < 0.05) {
@@ -174,18 +179,37 @@ if(treatment_permanova$`Pr(>F)`[1] < 0.05) {
                 ctrl_vs_treated$`Pr(>F)`[1])
   )
   
-  # Bonferroni correction for multiple comparisons
-  pairwise_results$p_adjusted <- p.adjust(pairwise_results$p_value, method = "bonferroni")
+  # FDR correction for multiple comparisons (Benjamini-Hochberg method)
+  pairwise_results$p_fdr <- p.adjust(pairwise_results$p_value, method = "BH")
+  
+  # Add significance indicator
+  pairwise_results$significant_fdr <- ifelse(pairwise_results$p_fdr < 0.05, "Yes", "No")
   
   cat("\n=== Pairwise Comparisons Summary ===\n")
   print(pairwise_results)
   
-  # Save results
-  write.csv(pairwise_results, 
-            "LabNotebook/Chap4/treatment_pairwise_permanova.csv", 
-            row.names = FALSE)
+  n_sig_unadjusted <- sum(pairwise_results$p_value < 0.05)
+  n_sig_fdr <- sum(pairwise_results$p_fdr < 0.05)
+  
+  # Display significant comparisons
+  if(n_sig_fdr > 0) {
+    cat("\n=== Significant Comparisons (FDR < 0.05) ===\n")
+    sig_comparisons <- pairwise_results[pairwise_results$p_fdr < 0.05, ]
+    for(i in 1:nrow(sig_comparisons)) {
+      cat(sig_comparisons$Comparison[i], 
+          ": R² =", round(sig_comparisons$R2[i], 4),
+          ", p =", round(sig_comparisons$p_value[i], 3),
+          ", p_FDR =", round(sig_comparisons$p_fdr[i], 3), "\n")
+    }
+  } else {
+    cat("\n=== No comparisons significant after FDR correction ===\n")
+  }
   
 } else {
-  cat("\n=== Overall PERMANOVA not significant, skipping pairwise comparisons ===\n")
+  cat("\n=== Overall PERMANOVA not significant (p ≥ 0.05) ===\n")
+  cat("Pairwise comparisons not performed.\n")
 }
 
+#write.csv(pairwise_results, 
+          "LabNotebook/Chap4/treatment_pairwise_permanova.csv", 
+          row.names = FALSE)
