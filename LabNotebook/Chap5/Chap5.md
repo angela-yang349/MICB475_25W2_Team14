@@ -6,6 +6,16 @@ To evaluate whether distinct disease-modifying therapies are significantly assoc
 ## Code:
 [Aim 2 code](/Aim2_code.R)
 
+## Methods:
+* Alpha Diversity Analysis
+  * Shannon diversity index was calculated across all treatment types (untreated PMS, dimethyl fumarate, fingolimod, glatiramer acetate, interferon, ocrevus/rituximab, and healthy controls) and visualized using boxplots
+  * Kruskal-Wallis test was performed to assess differences across treatment groups
+* Beta Diversity Analysis
+  * Weighted UniFrac distances were calculated for all samples and visualized using PCoA, with PERMANOVA testing for overall treatment effects across all groups (untreated PMS, dimethyl fumarate, fingolimod, glatiramer acetate, interferon, ocrevus/rituximab, and healthy controls)
+  * A second PCoA plot excluding healthy controls was generated to better visualize differences among PMS treatment types
+  * If PERMANOVA was significant (p < 0.05), pairwise comparisons were conducted between each treatment type and untreated PMS, between untreated PMS and healthy controls, and between each treatment type and healthy controls
+  * P-values were adjusted using FDR correction, with comparisons considered significant if p_FDR < 0.05
+
 ## Visualizations:
 
 ### Alpha diversity untreated PMS vs. each treatment type (with controls)
@@ -13,6 +23,8 @@ To evaluate whether distinct disease-modifying therapies are significantly assoc
 ![treatment_types_shannon_plot](treatment_types_shannon_plot.png)
 
 No significant differences in alpha diversity (Shannon Index) were detected across individual treatment types, including untreated and healthy control participants (Kruskal–Wallis, χ² = 8.89, df = 6, p = 0.180), indicating that within-sample microbial diversity did not vary significantly by treatment type.
+
+Kruskal-Wallis rank sum test results: [kruskal_treatments](/kruskal_treatments.csv)
 
 
 ### Beta diversity untreated PMS vs. each treatment type (with controls)
@@ -24,7 +36,8 @@ No significant differences in alpha diversity (Shannon Index) were detected acro
 
 ![treatment_types_wunifrac_pcoa_pms_only](treatment_types_wunifrac_pcoa_pms_only.png)
 
-Pairwise PERMANOVA tests revealed that none of the treatment comparisons showed statistically significant microbiome differences after FDR correction for multiple testing (all p_FDR > 0.05), despite several significant results before correction (fingolimod vs healthy controls: p = 0.026; glatiramer acetate vs healthy controls: p = 0.033).
-Effect sizes were consistently small across all comparisons (R² < 0.03), with treatment type explaining less than 3% of microbiome variance in any pairwise comparison.
+Pairwise PERMANOVA comparisons revealed that several treatment groups showed significant microbiome differences before correction for multiple testing, including fingolimod versus healthy controls (R² = 0.006, p = 0.021), glatiramer acetate versus healthy controls (R² = 0.005, p = 0.029), and glatiramer acetate versus untreated PMS patients (R² = 0.026, p = 0.042).
+However, after FDR correction for 11 pairwise comparisons, none of these differences remained statistically significant (all p_FDR > 0.05).
+Effect sizes remained small across all comparisons (R² < 0.03).
 
 Pairwise PERMANOVA results: [treatment_types_pairwise_permanova](/treatment_types_pairwise_permanova.csv)

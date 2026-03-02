@@ -22,8 +22,8 @@ treatment_types_shannon_plot
 
 #save the file as a .png on your local computer
 #ggsave(filename = "LabNotebook/Chap5/treatment_types_shannon_plot.png",
-       treatment_types_shannon_plot,
-       height=5, width=7, dpi = 300)
+       #treatment_types_shannon_plot,
+       #height=5, width=7, dpi = 300)
 
 ## Statistical test - Kruskal-Wallis rank sum test
 
@@ -40,6 +40,13 @@ kruskal_treatments <- kruskal.test( Shannon ~ treatments, data = Aim2_alpha_samp
 kruskal_treatments
 
 #none of these differences are significant since p=0.18 (not less than 0.05), thus further analysis is not needed
+
+write.csv(data.frame(
+  statistic = kruskal_treatments$statistic,
+  p_value = kruskal_treatments$p.value,
+  method = kruskal_treatments$method,
+  parameter = kruskal_treatments$parameter
+), "LabNotebook/Chap5/kruskal_treatments.csv", row.names = FALSE)
 
 
 #### AIM 2: Beta diversity across treatment types (with controls) ####
@@ -63,10 +70,8 @@ treatment_types_beta_plot_all <- plot_ordination(ms_rare,
 treatment_types_beta_plot_all
 
 #ggsave("LabNotebook/Chap5/treatment_types_wunifrac_pcoa_with_controls.png", 
-       treatment_types_beta_plot_all, 
-       width = 9, 
-       height = 6, 
-       dpi = 300)
+       #treatment_types_beta_plot_all, 
+       #width = 9, height = 6, dpi = 300)
 
 # Create subset WITHOUT healthy controls
 ms_rare_pms_treatments <- subset_samples(ms_rare, disease_course != "Control")
@@ -90,10 +95,8 @@ treatment_types_beta_plot_pms <- plot_ordination(ms_rare_pms_treatments,
 treatment_types_beta_plot_pms
 
 #ggsave("LabNotebook/Chap5/treatment_types_wunifrac_pcoa_pms_only.png", 
-       treatment_types_beta_plot_pms, 
-       width = 9, 
-       height = 6, 
-       dpi = 300)
+       #treatment_types_beta_plot_pms, 
+       #width = 9, height = 6, dpi = 300)
 
 # PERMANOVA test (treatment type effect)
 treatment_types_metadata_df <- data.frame(sample_data(ms_rare))
@@ -261,5 +264,5 @@ if(treatment_types_permanova$`Pr(>F)`[1] < 0.05) {
 }
 
 #write.csv(pairwise_comparisons,
-          "LabNotebook/Chap5/treatment_types_pairwise_permanova.csv",
-          row.names = FALSE)
+          #"LabNotebook/Chap5/treatment_types_pairwise_permanova.csv",
+          #row.names = FALSE)

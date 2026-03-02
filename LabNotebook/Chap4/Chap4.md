@@ -6,12 +6,24 @@ To compare the global diversity and compositional structure of the gut microbiom
 ## Code:
 [Aim 1 code](/Aim1_code.R)
 
+## Methods:
+* Preliminary Analysis: SPMS vs PPMS Comparison
+  * Beta diversity (weighted UniFrac distance and PCoA) was compared between SPMS and PPMS patients using PERMANOVA
+  * if no significant difference was detected (p ≥ 0.05), these subtypes were combined into a single "PMS" category
+* Alpha Diversity Analysis
+  * Shannon diversity index was calculated for treated PMS, untreated PMS, and healthy control groups and visualized using boxplots
+  * Kruskal-Wallis test was performed to assess differences across groups
+* Beta Diversity Analysis
+  * Weighted UniFrac distances were calculated and visualized using PCoA, with PERMANOVA testing for overall treatment effects across the three groups (treated PMS, untreated PMS, and healthy control)
+  * If significant (p < 0.05), pairwise PERMANOVA comparisons were conducted between all group pairs, with p-values adjusted using FDR correction
+
 ## Visualizations:
 ### PRELIMINARY: Beta diversity SPMS vs PPMS (no controls)
 
 ![spms_ppms_wunifrac_pcoa](spms_ppms_wunifrac_pcoa.png)
 
 No significant differences in gut microbiome composition were detected between SPMS and PPMS patients (PERMANOVA, R² = 0.006, F = 0.69, p = 0.700), indicating that these progressive MS subtypes can be combined into a single "PMS" category for subsequent analyses.
+
 
 ### Alpha diversity treated vs untreated PMS (with controls)
 
