@@ -15,6 +15,7 @@
   * conducted pairwise PERMANOVA comparisons for beta diversity (aim 1 & aim 2) - did we do them correctly?
   * differences between bonferroni and FDR correction? is this necessary for PERMANOVA?
   * is pairwise Wilcoxon tests with FDR correction needed for alpha diversity results?
+  * are individual ANOVA tests for alpha diversity only run is significant is detected using the Kruskal-Wallis test?
 
 ## Conclusions
 
