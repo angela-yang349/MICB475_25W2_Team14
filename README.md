@@ -30,3 +30,4 @@
 * [Chap.4](/LabNotebook/Chap4/Chap4.md) - Aim 1
 * [Chap.5](/LabNotebook/Chap5/Chap5.md) - Aim 2
 * [Chap.6](/LabNotebook/Chap6/Chap6.md) - Aim 3
+* [Chap.7](/LabNotebook/Chap7/Chap7.md) - Aim 4
