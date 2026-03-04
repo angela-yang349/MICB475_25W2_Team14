@@ -20,7 +20,6 @@
 ## Conclusions
 * Remove RRMS household controls from the data and assign it to a new object
 * Re-run the diversity analyses again using the data with the removed RRMS controls
-* Do proposal corrections
 
 ## Discussion
 * FDR correction is a good call
@@ -34,3 +33,5 @@
 ## To-do
 - [ ] proposal corrections
 - [ ] Re-run the diversity analyses again using the data with the removed RRMS controls
+- [ ] Run Core Microbiome
+- [ ] Run Indcator Species Analyses
