@@ -6,6 +6,9 @@ library(tidyverse)
 library(phyloseq)
 library(indicspecies)
 
+# set seed to account for randomness
+set.seed(100)
+
 # load data
 load("ms_rare.RData")
 ms_rare_no_RRMS_ctrl <- subset_samples(ms_rare, disease_course_control != "Control_RRMS")
@@ -29,6 +32,5 @@ res <- isa_ms$sign %>%
 # view results
 view(res)
 
-# save as a csv to github
+#save table to github
 write.csv(res, "ISA_results.csv", row.names = FALSE)
-
