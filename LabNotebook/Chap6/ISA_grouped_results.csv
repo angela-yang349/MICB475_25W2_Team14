@@ -1,0 +1,10 @@
+"ASV","s.Control","s.Treated","s.Untreated","index","stat","p.value","Domain","Phylum","Class","Order","Family","Genus","Species"
+"feb2e37114daa6d2f4387811e83850ba",1,0,0,1,0.299414307069307,0.03,"d__Bacteria","p__Bacillota","c__Clostridia","o__Lachnospirales","f__Lachnospiraceae","g__Fusicatenibacter",NA
+"5585e9ecc7d66b7cd2bc1e2aa80c2470",0,1,0,2,0.281566845188149,0.035,"d__Bacteria","p__Bacillota","c__Clostridia","o__Peptostreptococcales-Tissierellales","f__Family_XI","g__Fenollaria",NA
+"7ef15f834ddeffade9a799c5697cc61a",0,1,0,2,0.254000254000381,0.02,"d__Bacteria","p__Bacillota","c__Clostridia","o__Oscillospirales","f__Oscillospiraceae","g__Flavonifractor",NA
+"d52a0395431a1912fd52bda732cd2784",0,1,0,2,0.292959533790758,0.025,"d__Bacteria","p__Actinomycetota","c__Actinobacteria","o__Actinomycetales","f__Actinomycetaceae","g__Varibaculum",NA
+"78fbc957b543921f5c60511e75dc8ab8",0,1,0,2,0.224569859932282,0.025,"d__Bacteria","p__Bacteroidota","c__Bacteroidia","o__Bacteroidales","f__Prevotellaceae","g__Prevotellaceae_NK3B31_group",NA
+"110ad3992f825e7203f1923383607888",0,1,1,6,0.419076634845716,0.02,"d__Bacteria","p__Verrucomicrobiota","c__Verrucomicrobiia","o__Verrucomicrobiales","f__Akkermansiaceae","g__Akkermansia",NA
+"920b6f8c40bd672f3886550b5b842616",0,1,0,2,0.325388091389661,0.005,"d__Bacteria","p__Bacillota","c__Clostridia","o__Peptostreptococcales-Tissierellales","f__Family_XI","g__Anaerococcus",NA
+"33b19ddc04e29a0f6c55716d40551ec6",0,1,0,2,0.351401677878473,0.01,"d__Bacteria","p__Bacillota","c__Clostridia","o__Peptostreptococcales-Tissierellales","f__Family_XI","g__Peptoniphilus",NA
+"097138be3a15c87233cb01e6ee6a4da4",1,0,0,1,0.26846242208561,0.03,"d__Bacteria","p__Bacillota","c__Clostridia","o__Lachnospirales","f__Lachnospiraceae","g__[Eubacterium]_eligens_group",NA
