@@ -1,0 +1,7 @@
+"ASV","s.Control","s.Dimethyl fumarate","s.Fingolimod","s.Glatiramer acetate","s.Interferon","s.ocrevus(rituxan)","s.Untreated","index","stat","p.value","Domain","Phylum","Class","Order","Family","Genus","Species","treatment","label"
+"793b25a95456e243a0be1d5dabb8b5b3",0,0,1,1,0,0,0,19,0.741444630859093,0.005,"d__Bacteria","p__Bacteroidota","c__Bacteroidia","o__Bacteroidales","f__Barnesiellaceae","g__Barnesiella",NA,"","g__Barnesiella"
+"000d78770aa3b46d4f84568a723d1c62",0,0,1,0,0,0,0,3,0.569702908109808,0.025,"d__Bacteria","p__Bacteroidota","c__Bacteroidia","o__Bacteroidales","f__Incertae_Sedis","g__Incertae_Sedis",NA,"","g__Incertae_Sedis"
+"8ae5fe1e2084ad6a832b7667b15e06d2",0,0,0,1,0,0,0,4,0.707106781186548,0.03,"d__Bacteria","p__Bacillota","c__Clostridia","o__Peptococcales","f__Peptococcaceae","g__Peptococcus",NA,"","g__Peptococcus"
+"7ef15f834ddeffade9a799c5697cc61a",0,0,1,0,0,0,0,3,0.516397779494322,0.035,"d__Bacteria","p__Bacillota","c__Clostridia","o__Oscillospirales","f__Oscillospiraceae","g__Flavonifractor",NA,"","g__Flavonifractor"
+"9132071c6a76ae971f847adc316f0af8",0,0,0,1,0,0,0,4,0.661162125270836,0.03,"d__Bacteria","p__Pseudomonadota","c__Gammaproteobacteria","o__Enterobacterales","f__Enterobacteriaceae","g__Escherichia-Shigella",NA,"","g__Escherichia-Shigella"
+"130a8330de52a69354df4f227b62c052",0,1,0,0,0,0,0,2,0.408248290463863,0.04,"d__Bacteria","p__Bacillota","c__Bacilli","o__Erysipelotrichales","f__Erysipelotrichaceae","g__[Clostridium]_innocuum_group",NA,"","g__[Clostridium]_innocuum_group"
