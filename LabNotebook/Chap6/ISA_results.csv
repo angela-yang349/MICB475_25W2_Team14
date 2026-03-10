@@ -1,7 +1,8 @@
-ASV,s.Control,s.Dimethyl fumarate,s.Fingolimod,s.Glatiramer acetate,s.Interferon,s.ocrevus(rituxan),s.Untreated,index,stat,p.value,Domain,Phylum,Class,Order,Family,Genus,Species
-793b25a95456e243a0be1d5dabb8b5b3,0,0,1,1,0,0,0,19,0.741444631,0.005,d__Bacteria,p__Bacteroidota,c__Bacteroidia,o__Bacteroidales,f__Barnesiellaceae,g__Barnesiella,NA
-000d78770aa3b46d4f84568a723d1c62,0,0,1,0,0,0,0,3,0.569702908,0.025,d__Bacteria,p__Bacteroidota,c__Bacteroidia,o__Bacteroidales,f__Incertae_Sedis,g__Incertae_Sedis,NA
-8ae5fe1e2084ad6a832b7667b15e06d2,0,0,0,1,0,0,0,4,0.707106781,0.03,d__Bacteria,p__Bacillota,c__Clostridia,o__Peptococcales,f__Peptococcaceae,g__Peptococcus,NA
-7ef15f834ddeffade9a799c5697cc61a,0,0,1,0,0,0,0,3,0.516397779,0.035,d__Bacteria,p__Bacillota,c__Clostridia,o__Oscillospirales,f__Oscillospiraceae,g__Flavonifractor,NA
-9132071c6a76ae971f847adc316f0af8,0,0,0,1,0,0,0,4,0.661162125,0.03,d__Bacteria,p__Pseudomonadota,c__Gammaproteobacteria,o__Enterobacterales,f__Enterobacteriaceae,g__Escherichia-Shigella,NA
-130a8330de52a69354df4f227b62c052,0,1,0,0,0,0,0,2,0.40824829,0.04,d__Bacteria,p__Bacillota,c__Bacilli,o__Erysipelotrichales,f__Erysipelotrichaceae,g__[Clostridium]_innocuum_group,NA
+"ASV","s.Control","s.Dimethyl fumarate","s.Fingolimod","s.Glatiramer acetate","s.Interferon","s.ocrevus(rituxan)","s.Untreated","index","stat","p.value","Domain","Phylum","Class","Order","Family","Genus","Species"
+"793b25a95456e243a0be1d5dabb8b5b3",0,0,1,1,0,0,0,19,0.741444630859093,0.01,"d__Bacteria","p__Bacteroidota","c__Bacteroidia","o__Bacteroidales","f__Barnesiellaceae","g__Barnesiella",NA
+"000d78770aa3b46d4f84568a723d1c62",0,0,1,0,0,0,0,3,0.569702908109808,0.025,"d__Bacteria","p__Bacteroidota","c__Bacteroidia","o__Bacteroidales","f__Incertae_Sedis","g__Incertae_Sedis",NA
+"8ae5fe1e2084ad6a832b7667b15e06d2",0,0,0,1,0,0,0,4,0.707106781186548,0.01,"d__Bacteria","p__Bacillota","c__Clostridia","o__Peptococcales","f__Peptococcaceae","g__Peptococcus",NA
+"7ef15f834ddeffade9a799c5697cc61a",0,0,1,0,0,0,0,3,0.516397779494322,0.04,"d__Bacteria","p__Bacillota","c__Clostridia","o__Oscillospirales","f__Oscillospiraceae","g__Flavonifractor",NA
+"d52a0395431a1912fd52bda732cd2784",0,0,0,1,0,0,0,4,0.5726562866782,0.03,"d__Bacteria","p__Actinomycetota","c__Actinobacteria","o__Actinomycetales","f__Actinomycetaceae","g__Varibaculum",NA
+"9132071c6a76ae971f847adc316f0af8",0,0,0,1,0,0,0,4,0.661162125270836,0.02,"d__Bacteria","p__Pseudomonadota","c__Gammaproteobacteria","o__Enterobacterales","f__Enterobacteriaceae","g__Escherichia-Shigella",NA
+"920b6f8c40bd672f3886550b5b842616",0,0,0,1,0,0,0,4,0.598891965813424,0.045,"d__Bacteria","p__Bacillota","c__Clostridia","o__Peptostreptococcales-Tissierellales","f__Family_XI","g__Anaerococcus",NA
