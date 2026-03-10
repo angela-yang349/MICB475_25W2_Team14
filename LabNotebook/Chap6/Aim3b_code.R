@@ -29,13 +29,6 @@ res <- isa_ms$sign %>%
 # view results
 view(res)
 
-# save as a bar chart to github
-library(ggplot2)
-
-ggplot(res, aes(x = reorder(OTU, stat), y = stat)) +
-  geom_bar(stat = "identity") +
-  coord_flip() +
-  theme_minimal() -> p
-
-ggsave("ISA_barplot.png", p, width = 10, height = 7)
+# save as a csv to github
+write.csv(res, "ISA_results.csv", row.names = FALSE)
 
