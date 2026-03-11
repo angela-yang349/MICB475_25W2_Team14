@@ -5,13 +5,11 @@ library(vegan)
 library(ggsignif)
 
 # Load rarefied data
-load("LabNotebook/Chap3/ms_rare.RData")
+load("LabNotebook/Chap4/ms_rare_no_RRMS_ctrl.RData")
 
-# Remove RRMS control samples
-ms_rare_no_RRMS_ctrl <- subset_samples(ms_rare, disease_course_control != "Control_RRMS")
 
 #### AIM 2: Alpha diversity across treatment types (with controls) ####
-treatment_types_shannon_plot <-plot_richness(ms_rare, 
+corrected_treatment_types_shannon_plot <-plot_richness(ms_rare_no_RRMS_ctrl, 
                                            x = "treatments", 
                                            measures = c("Shannon")) +
   xlab("Treatment Type") +
@@ -21,19 +19,19 @@ treatment_types_shannon_plot <-plot_richness(ms_rare,
   ggtitle("Alpha Diversity Across Treatment Types and Healthy Controls")+
   theme_classic() + 
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
-treatment_types_shannon_plot
+corrected_treatment_types_shannon_plot
 
 #save the file as a .png on your local computer
-#ggsave(filename = "LabNotebook/Chap5/treatment_types_shannon_plot.png",
-       #treatment_types_shannon_plot,
+#ggsave(filename = "LabNotebook/Chap5/corrected_treatment_types_shannon_plot.png",
+       #corrected_treatment_types_shannon_plot,
        #height=5, width=7, dpi = 300)
 
 ## Statistical test - Kruskal-Wallis rank sum test
 
 # Extract richness metrics and metadata
-Aim2_richness_estimate <- estimate_richness(ms_rare, 
+Aim2_richness_estimate <- estimate_richness(ms_rare_no_RRMS_ctrl, 
                                             measures = c("Observed", "Chao1", "ACE", "Shannon", "Simpson", "InvSimpson"))
-Aim2_alpha_samp_dat <- sample_data(ms_rare)
+Aim2_alpha_samp_dat <- sample_data(ms_rare_no_RRMS_ctrl)
 Aim2_alpha_samp_and_richness <- data.frame(Aim2_alpha_samp_dat, Aim2_richness_estimate)
 
 view(Aim2_alpha_samp_and_richness)
@@ -42,14 +40,14 @@ view(Aim2_alpha_samp_and_richness)
 kruskal_treatments <- kruskal.test( Shannon ~ treatments, data = Aim2_alpha_samp_and_richness)
 kruskal_treatments
 
-#none of these differences are significant since p=0.18 (not less than 0.05), thus further analysis is not needed
+#none of these differences are significant since p=0.07782 (not less than 0.05), thus further analysis is not needed
 
 write.csv(data.frame(
   statistic = kruskal_treatments$statistic,
   p_value = kruskal_treatments$p.value,
   method = kruskal_treatments$method,
   parameter = kruskal_treatments$parameter
-), "LabNotebook/Chap5/kruskal_treatments.csv", row.names = FALSE)
+), "LabNotebook/Chap5/corrected_kruskal_treatments.csv", row.names = FALSE)
 
 
 #### AIM 2: Beta diversity across treatment types (with controls) ####
