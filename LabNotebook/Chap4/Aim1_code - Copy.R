@@ -12,6 +12,7 @@ load("LabNotebook/Chap3/ms_rare.RData")
 
 # Remove RRMS control samples
 ms_rare_no_RRMS_ctrl <- subset_samples(ms_rare, disease_course_control != "Control_RRMS")
+#save(ms_rare_no_RRMS_ctrl, file= "LabNotebook/Chap4/ms_rare_no_RRMS_ctrl.RData") 
 
 #### AIM 1 PRELIMINARY: Beta diversity SPMS vs PPMS (no controls) ####
 
@@ -48,7 +49,7 @@ print(spms_ppms_permanova)
 
 
 #### AIM 1: Alpha diversity treated vs untreated PMS (with controls) ####
-treatment_alpha_plot <- plot_richness(ms_rare, 
+corrected_treatment_alpha_plot <- plot_richness(ms_rare_no_RRMS_ctrl, 
                                       x = "treatment_status", 
                                       measures = c("Shannon")) +
   xlab("Treatment Status") +
@@ -57,17 +58,17 @@ treatment_alpha_plot <- plot_richness(ms_rare,
   geom_point() +
   ggtitle("Alpha Diversity: Treated vs Untreated PMS and Controls") +
   theme_classic()
-treatment_alpha_plot
+corrected_treatment_alpha_plot
 
-#ggsave(filename = "LabNotebook/Chap4/treatment_shannon_boxplot.png",
-       #treatment_alpha_plot,
+#ggsave(filename = "LabNotebook/Chap4/corrected_treatment_shannon_boxplot.png",
+       #corrected_treatment_alpha_plot,
        #height = 4, width = 6)
 
 ### Statistical test - Kruskal-Wallis rank sum test
 #first extract info
-Aim1_richness_estimate <- estimate_richness(ms_rare, 
+Aim1_richness_estimate <- estimate_richness(ms_rare_no_RRMS_ctrl, 
                                             measures = c("Observed", "Chao1", "ACE", "Shannon", "Simpson", "InvSimpson"))
-Aim1_alpha_samp_dat <- sample_data(ms_rare)
+Aim1_alpha_samp_dat <- sample_data(ms_rare_no_RRMS_ctrl)
 Aim1_alpha_samp_and_richness <- data.frame(Aim1_alpha_samp_dat, Aim1_richness_estimate)
 
 view(Aim1_alpha_samp_and_richness)
@@ -76,7 +77,7 @@ view(Aim1_alpha_samp_and_richness)
 kruskal_treatment_status <- kruskal.test( Shannon ~ treatment_status, data = Aim1_alpha_samp_and_richness)
 kruskal_treatment_status
 
-#none of these differences are significant since p=0.2533 (not less than 0.05), thus further analysis is not needed
+#none of these differences are significant since p=0.06375 (not less than 0.05), thus further analysis is not needed
 
 
 
