@@ -6,7 +6,65 @@ library(ggplot2)
 
 load("LabNotebook/Chap3/ms_phyloseq.Rdata")
 
-phyloseq_RA <- transform_sample_counts(ms_phyloseq, function(x) x / sum(x))
+sample_variables(ms_phyloseq)
 
 # mechanism of action 
-immunomodulators <- 
+sample_data(ms_phyloseq)$group4 <- case_when(
+  sample_data(ms_phyloseq)$treatments %in% c(
+    "Glatiramer acetate",
+    "Interferon",
+    "Dimethyl fumarate"
+  ) ~ "Immunomodulators",
+  
+  sample_data(ms_phyloseq)$treatments %in% c(
+    "ocrevus(rituxan)",
+    "Fingolimod"
+  ) ~ "Lymphoctye",
+  
+  sample_data(ms_phyloseq)$treatments == "Untreated" ~ "Untreated PMS",
+  sample_data(ms_phyloseq)$treatments == "Control" ~ "Healthy Control",
+  
+  TRUE ~ NA_character_
+)
+
+table(sample_data(ms_phyloseq)$group4, useNA = "ifany")
+
+ms_groups <- subset_samples(ms_phyloseq, !is.na(group4))
+ms_groups <- prune_taxa(taxa_sums(ps_groups) > 0, ps_groups)
+
+phyloseq_RA <- transform_sample_counts(ms_groups, function(x) x / sum(x))
+
+ms_immunomod <- subset_samples(phyloseq_RA, group4 == "Immunomodulators")
+ms_lymphocyte <- subset_samples(phyloseq_RA, group4 == "Lymphoctye")
+ms_pms_untreated <- subset_samples(phyloseq_RA, group4 == "Untreated PMS")
+ms_hc <- subset_samples(phyloseq_RA, group4 == "Healthy Control")
+
+ms_immunomod <- prune_taxa(taxa_sums(ms_immunomod) > 0, ms_immunomod)
+ms_lymphocyte <- prune_taxa(taxa_sums(ms_lymphocyte) > 0, ms_lymphocyte)
+ms_pms_untreated <- prune_taxa(taxa_sums(ms_pms_untreated) > 0, ms_pms_untreated)
+ms_hc <- prune_taxa(taxa_sums(ms_hc) > 0, ms_hc)
+
+ms_control_ASVs <- core_members(ms_hc, detection=0.001, prevalence = 0.5)
+ms_untreated_ASVs <- core_members(ms_pms_untreated, detection=0.001, prevalence = 0.5)
+ms_lymphocyte_ASVs <- core_members(ms_lymphocyte, detection=0.001, prevalence = 0.5)
+ms_immunomod_ASVs <- core_members(ms_immunomod, detection=0.001, prevalence = 0.5)
+
+length(ms_immunomod_ASVs)
+length(ms_lymphocyte_ASVs)
+length(ms_untreated_ASVs)
+length(ms_control_ASVs)
+
+venn_list <- (x= list(
+  Immunomodulator = ms_immunomod_ASVs,
+  T_and_B_Cell = ms_lymphocyte_ASVs,
+  Untreated_PMS = ms_untreated_ASVs,
+  Control = ms_control_ASVs
+))
+
+venn_mechanism_1 <- ggVennDiagram(venn_list,
+              label = "count",
+              label_alpha = 0
+) +
+  scale_fill_gradient(low = "grey90", high = "steelblue")
+
+ggsave("LabNotebook/Chap6/venn_mechanism_1.png", venn_mechanism_1, width = 12, height =15)
