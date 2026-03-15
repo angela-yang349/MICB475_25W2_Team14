@@ -4,8 +4,8 @@
 To compare the global diversity and compositional structure of the gut microbiome between treated and untreated PMS patients.
 
 ## Code:
-[Aim 1 code](/Aim1_code.R) - original code
-[Aim 1 code updated](/Aim1_code - Copy.R) - updated code with RRMS_household_controls removed from RData
+* [Aim 1 code](/Aim1_code.R) - original code
+* [Aim 1 code updated](/Aim1_code - Copy.R) - updated code with RRMS_household_controls removed from RData
 
 ## Methods:
 * Preliminary Analysis: SPMS vs PPMS Comparison
@@ -41,10 +41,10 @@ Pairwise PERMANOVA comparisons revealed significant unadjusted differences betwe
 However, after FDR correction for multiple comparisons, these differences did not reach statistical significance (both p_FDR = 0.062).
 No significant differences were detected between treated and untreated PMS patients (R² = 0.010, F = 1.09, p = 0.329).
 
-Overall PERMANOVE results: [treatment_permanova_results](/treatment_permanova_results.csv) - original
-Pairwise PERMANOVA results: [treatment_pairwise_permanova](/treatment_pairwise_permanova.csv) - original
+* Overall PERMANOVE results: [treatment_permanova_results](/treatment_permanova_results.csv) - original
+* Pairwise PERMANOVA results: [treatment_pairwise_permanova](/treatment_pairwise_permanova.csv) - original
 
 After removing RRMS household controls from the analysis, treatment status did not significantly affect gut microbiome composition (PERMANOVA, R² = 0.015, F = 1.63, p = 0.095), indicating no detectable beta diversity differences among healthy controls, treated PMS, and untreated PMS patients in this updated dataset, and therefore pairwise comparisons were not performed.
 
-Overall PERMANOVA results: [treatment_permanova_results](/updated_treatment_permanova_results.csv) - after RRMS_household_controls were removed
+* Overall PERMANOVA results: [treatment_permanova_results](/updated_treatment_permanova_results.csv) - after RRMS_household_controls were removed
 

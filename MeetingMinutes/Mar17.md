@@ -6,8 +6,8 @@
   * Indicator species analyses
   
 * Upcoming work:
-  * DEseq2
-  * PICRUSt2
+  * DEseq2 - no significant beta diversity is observed between treatment types 
+  * PICRUSt2 - indicator taxa was identified
 
 * Questions:
 
