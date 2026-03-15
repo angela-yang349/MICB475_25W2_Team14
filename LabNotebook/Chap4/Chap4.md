@@ -5,7 +5,7 @@ To compare the global diversity and compositional structure of the gut microbiom
 
 ## Code:
 * [Aim 1 code](/Aim1_code.R) - original code
-* [Aim 1 code updated](/Aim1_code - Copy.R) - updated code with RRMS_household_controls removed from RData
+* [Aim 1 code updated](/Aim1_code_updated.R) - updated code with RRMS_household_controls removed from RData
 
 ## Methods:
 * Preliminary Analysis: SPMS vs PPMS Comparison

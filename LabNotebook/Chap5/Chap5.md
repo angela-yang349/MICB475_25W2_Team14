@@ -5,7 +5,7 @@ To evaluate whether distinct disease-modifying therapies are significantly assoc
 
 ## Code:
 * [Aim 2 code](/Aim2_code.R) - original code
-* [Aim 2 code updated](/Aim2_code - Copy.R) - updated code with RRMS_household_controls removed from RData
+* [Aim 2 code updated](/Aim2_code_updated.R) - updated code with RRMS_household_controls removed from RData
 
 ## Methods:
 * Alpha Diversity Analysis
