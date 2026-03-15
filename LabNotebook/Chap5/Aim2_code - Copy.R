@@ -52,8 +52,7 @@ write.csv(data.frame(
 
 #### AIM 2: Beta diversity across treatment types (with controls) ####
 
-treatment_types_wunifrac_dist <- distance(# Remove RRMS control samples
-ms_rare_no_RRMS_ctrl <- subset_samples(ms_rare_no_RRMS_ctrl, disease_course_control != "Control_RRMS"), method = "wunifrac")
+treatment_types_wunifrac_dist <- distance(ms_rare_no_RRMS_ctrl, method = "wunifrac")
 
 treatment_types_wunifrac_pcoa <- ordinate(ms_rare_no_RRMS_ctrl, 
                                           method = "PCoA", 
@@ -71,7 +70,7 @@ treatment_types_beta_plot_all <- plot_ordination(ms_rare_no_RRMS_ctrl,
         legend.text = element_text(size = 8))
 treatment_types_beta_plot_all
 
-#ggsave("LabNotebook/Chap5/treatment_types_wunifrac_pcoa_with_controls.png", 
+#ggsave("LabNotebook/Chap5/updated_treatment_types_wunifrac_pcoa_with_controls.png", 
        #treatment_types_beta_plot_all, 
        #width = 9, height = 6, dpi = 300)
 
@@ -96,7 +95,7 @@ treatment_types_beta_plot_pms <- plot_ordination(ms_rare_pms_treatments,
         legend.text = element_text(size = 9))
 treatment_types_beta_plot_pms
 
-#ggsave("LabNotebook/Chap5/treatment_types_wunifrac_pcoa_pms_only.png", 
+#ggsave("LabNotebook/Chap5/updated_treatment_types_wunifrac_pcoa_pms_only.png", 
        #treatment_types_beta_plot_pms, 
        #width = 9, height = 6, dpi = 300)
 
@@ -110,7 +109,11 @@ treatment_types_permanova <- adonis2(treatment_types_wunifrac_dist ~ treatments,
 cat("\n=== PERMANOVA: Beta Diversity Across Treatment Types ===\n")
 print(treatment_types_permanova)
 
-#differences are significant (p=0.002) so do pairwise PERMANOVA comparisons
+# Save overall PERMANOVA results
+#write.csv(as.data.frame(treatment_types_permanova),
+#"LabNotebook/Chap5/updated_treatment_types_permanova_results.csv")
+
+#differences are significant (p=0.011) so do pairwise PERMANOVA comparisons
 
 if(treatment_types_permanova$`Pr(>F)`[1] < 0.05) {
   
@@ -266,5 +269,5 @@ if(treatment_types_permanova$`Pr(>F)`[1] < 0.05) {
 }
 
 #write.csv(pairwise_comparisons,
-          #"LabNotebook/Chap5/treatment_types_pairwise_permanova.csv",
+          #"LabNotebook/Chap5/updated_treatment_types_pairwise_permanova.csv",
           #row.names = FALSE)

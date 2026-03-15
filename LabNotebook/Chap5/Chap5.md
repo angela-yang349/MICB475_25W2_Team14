@@ -4,7 +4,8 @@
 To evaluate whether distinct disease-modifying therapies are significantly associated with differences in gut microbiome profiles among PMS patients.
 
 ## Code:
-[Aim 2 code](/Aim2_code.R)
+[Aim 2 code](/Aim2_code.R) - original code
+[Aim 2 code updated](/Aim2_code - Copy.R) - updated code with RRMS_household_controls removed from RData
 
 ## Methods:
 * Alpha Diversity Analysis
@@ -20,24 +21,27 @@ To evaluate whether distinct disease-modifying therapies are significantly assoc
 
 ### Alpha diversity untreated PMS vs. each treatment type (with controls)
 
-![treatment_types_shannon_plot](treatment_types_shannon_plot.png)
+![treatment_types_shannon_plot](corrected_treatment_types_shannon_plot.png)
 
-No significant differences in alpha diversity (Shannon Index) were detected across individual treatment types, including untreated and healthy control participants (Kruskal–Wallis, χ² = 8.89, df = 6, p = 0.180), indicating that within-sample microbial diversity did not vary significantly by treatment type.
+No significant differences in alpha diversity (Shannon Index) were detected across individual treatment types, including untreated and healthy control participants (Kruskal–Wallis, χ² = 11.36, df = 6, p = 0.0778), indicating that within-sample microbial diversity did not vary significantly by treatment type.
 
-Kruskal-Wallis rank sum test results: [kruskal_treatments](/kruskal_treatments.csv)
+Kruskal-Wallis rank sum test results: [kruskal_treatments](/corrected_kruskal_treatments.csv)
 
 
 ### Beta diversity untreated PMS vs. each treatment type (with controls)
 
-![treatment_types_wunifrac_pcoa_with_controls](treatment_types_wunifrac_pcoa_with_controls.png)
+![treatment_types_wunifrac_pcoa_with_controls](updated_treatment_types_wunifrac_pcoa_with_controls.png)
 
 
 ### Beta diversity untreated PMS vs. each treatment type (no controls)
 
-![treatment_types_wunifrac_pcoa_pms_only](treatment_types_wunifrac_pcoa_pms_only.png)
+![treatment_types_wunifrac_pcoa_pms_only](updated_treatment_types_wunifrac_pcoa_pms_only.png)
 
-Pairwise PERMANOVA comparisons revealed that several treatment groups showed significant microbiome differences before correction for multiple testing, including fingolimod versus healthy controls (R² = 0.006, p = 0.021), glatiramer acetate versus healthy controls (R² = 0.005, p = 0.029), and glatiramer acetate versus untreated PMS patients (R² = 0.026, p = 0.042).
+Overall PERMANOVA results: [treatment_types_permanova_results](/updated_treatment_types_permanova_results.csv) - after RRMS_household_controls were removed
+
+Pairwise PERMANOVA comparisons revealed that several treatment groups showed nominally significant microbiome differences before correction for multiple testing, including glatiramer acetate versus healthy controls (R² = 0.024, p = 0.025), glatiramer acetate versus untreated PMS patients (R² = 0.026, p = 0.047), and fingolimod versus healthy controls (R² = 0.019, p = 0.047). 
 However, after FDR correction for 11 pairwise comparisons, none of these differences remained statistically significant (all p_FDR > 0.05).
 Effect sizes remained small across all comparisons (R² < 0.03).
 
-Pairwise PERMANOVA results: [treatment_types_pairwise_permanova](/treatment_types_pairwise_permanova.csv)
+Pairwise PERMANOVA results: [treatment_types_pairwise_permanova](/treatment_types_pairwise_permanova.csv) - original
+Pairwise PERMANOVA results: [treatment_types_pairwise_permanova](/updated_treatment_types_pairwise_permanova.csv) - after RRMS_household_controls were removed

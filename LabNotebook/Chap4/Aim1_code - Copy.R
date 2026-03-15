@@ -17,7 +17,7 @@ ms_rare_no_RRMS_ctrl <- subset_samples(ms_rare, disease_course_control != "Contr
 #### AIM 1 PRELIMINARY: Beta diversity SPMS vs PPMS (no controls) ####
 
 # Remove control samples for PMS-only analyses
-ms_rare_pms_only <- subset_samples(ms_rare, disease_course != "Control")
+ms_rare_pms_only <- subset_samples(ms_rare_no_RRMS_ctrl, disease_course != "Control")
 
 pms_only_wunifrac_dist <- distance(ms_rare_pms_only, method = "wunifrac")
 
@@ -84,7 +84,7 @@ kruskal_treatment_status
 #### AIM 1: Beta diversity treated vs untreated PMS (with controls) ####
 treatment_wunifrac_dist <- distance(ms_rare_no_RRMS_ctrl, method = "wunifrac")
 
-treatment_wunifrac_pcoa <- ordinate(mms_rare_no_RRMS_ctrl, 
+treatment_wunifrac_pcoa <- ordinate(ms_rare_no_RRMS_ctrl, 
                                     method = "PCoA", 
                                     distance = treatment_wunifrac_dist)
 
@@ -98,11 +98,8 @@ treatment_beta_plot <- plot_ordination(ms_rare_no_RRMS_ctrl,
   theme(legend.position = "right")
 treatment_beta_plot
 
-#ggsave("LabNotebook/Chap4/treatment_wunifrac_pcoa.png", 
-       #treatment_beta_plot, 
-       #width = 8, 
-       #height = 6, 
-       #dpi = 300)
+#ggsave("LabNotebook/Chap4/updated_treatment_wunifrac_pcoa.png", 
+       #treatment_beta_plot, width = 8, height = 6, dpi = 300)
 
 # PERMANOVA test (treatment effect)
 metadata_all_df <- data.frame(sample_data(ms_rare_no_RRMS_ctrl))
@@ -114,8 +111,8 @@ treatment_permanova <- adonis2(treatment_wunifrac_dist ~ treatment_status,
 print(treatment_permanova)
 
 # Save overall PERMANOVA results
-write.csv(as.data.frame(treatment_permanova),
-          "LabNotebook/Chap4/treatment_permanova_results.csv")
+#write.csv(as.data.frame(treatment_permanova),
+          #"LabNotebook/Chap4/updated_treatment_permanova_results.csv")
 
 # Pairwise PERMANOVA comparisons (if overall test is significant)
 if(treatment_permanova$`Pr(>F)`[1] < 0.05) {
@@ -214,6 +211,6 @@ if(treatment_permanova$`Pr(>F)`[1] < 0.05) {
   cat("Pairwise comparisons not performed.\n")
 }
 
-write.csv(pairwise_results, 
-          "LabNotebook/Chap4/treatment_pairwise_permanova.csv", 
-          row.names = FALSE)
+#write.csv(pairwise_results, 
+          #"LabNotebook/Chap4/updated_treatment_pairwise_permanova.csv", 
+          #row.names = FALSE)
