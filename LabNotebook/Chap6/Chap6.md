@@ -4,9 +4,9 @@
 Identify indicator taxa that are strongly associated with treatment status and specific treatment modalities in PMS patients
 
 ## Code:
-[Aim 3a Code](Aim3_code.R)
-[Aim 3a Code 2 Groups](Aim3a_code2.R)
-[Aim 3a Code 3 Groups](Aime3a_code_3_groups.R)
+* [Aim 3a Code](Aim3_code.R) - original code
+* [Aim 3a Code 2 Groups](Aim3a_code2.R) - code modified to compare grouped treatments (GA/IFN/DMF vs ocrevus/fingolimod)
+* [Aim 3a Code 3 Groups](Aime3a_code_3_groups.R) - code modified to compare grouped treatments (DMF vs GA/IFN vs ocrevus/fingolimod)
 
 
 ## Methods:
