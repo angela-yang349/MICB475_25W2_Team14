@@ -39,8 +39,20 @@ ms_untreated_2_ASVs <- core_members(ms_untreated_2, detection=0.001, prevalence 
 ms_treated_2_ASVs <- core_members(ms_treated_2, detection=0.001, prevalence = 0.5)
 
 # venn diagrams
-ms_venn_specific_treatments <- ggVennDiagram(x = list(Control = ms_control_ASVs, Untreated = ms_untreated_ASVs, Fingolimod = ms_treated_fingo_ASVs, Interferon = ms_treated_inter_ASVs, "Ocrevus (rituxan)" = ms_treated_oc_ASVs, DMF = ms_treated_dmf_ASVs, GA = ms_treated_ga_ASVs ))
-ms_venn_general <-ggVennDiagram(x =list(Control = ms_control_2_ASVs, Untreated = ms_untreated_2_ASVs, Treated=ms_treated_2_ASVs)) 
+ms_venn_specific_treatments <- (x = list(Control = ms_control_ASVs, Untreated = ms_untreated_ASVs, Fingolimod = ms_treated_fingo_ASVs, Interferon = ms_treated_inter_ASVs, "Ocrevus (rituxan)" = ms_treated_oc_ASVs, DMF = ms_treated_dmf_ASVs, GA = ms_treated_ga_ASVs ))
+ms_venn_general <-(x =list(Control = ms_control_2_ASVs, Untreated = ms_untreated_2_ASVs, Treated=ms_treated_2_ASVs)) 
+
+ms_venn_specific_treatments <- ggVennDiagram(ms_venn_specific_treatments,
+                               label = "count",
+                               label_alpha = 0
+) +
+  scale_fill_gradient(low = "grey90", high = "steelblue")
+
+ms_venn_general <- ggVennDiagram(ms_venn_general,
+                          label = "count",
+                          label_alpha = 0
+) +
+  scale_fill_gradient(low = "grey90", high = "steelblue")
 
 # save venn diagram
 ggsave("LabNotebook/Chap6/ms_venn_specific_treatments.png", ms_venn_specific_treatments, width = 10, height = 7)
