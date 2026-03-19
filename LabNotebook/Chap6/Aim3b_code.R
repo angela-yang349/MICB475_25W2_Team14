@@ -33,4 +33,25 @@ res <- isa_ms$sign %>%
 view(res)
 
 #save table to github
-write.csv(res, "ISA_results.csv", row.names = FALSE)                                   
+write.csv(res, "ISA_results.csv", row.names = FALSE) 
+
+# ===============================
+# ISA grouped by treatment_status (control, treated, untreated)
+
+isa_ms_status <- multipatt(
+  t(otu_table(ms_genus_RA)), 
+  cluster = sample_data(ms_genus_RA)$treatment_status
+)
+
+summary(isa_ms_status)
+
+res_status <- isa_ms_status$sign %>% 
+  rownames_to_column(var = "ASV") %>% 
+  left_join(taxtable) %>%
+  filter(p.value < 0.05)
+
+# view results
+View(res_status)
+
+# save table
+write.csv(res_status, "ISA_results_treatment_status.csv", row.names = FALSE)
