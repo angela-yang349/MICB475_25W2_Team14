@@ -8,6 +8,7 @@ Core Microbiome Analysis
  * [Aim 3a Code](Aim3_code.R) - original code
  * [Aim 3a Code 2 Groups](Aim3a_code2.R) - code modified to compare grouped treatments (GA/IFN/DMF vs ocrevus/fingolimod)
  * [Aim 3a Code 3 Groups](Aime3a_code_3_groups.R) - code modified to compare grouped treatments (DMF vs GA/IFN vs ocrevus/fingolimod)
+
 Indicator Species Analysis
  * [Aim 3b Code](Aim3b_code.R) - original code containing ungrouped treatments and grouping by treatment_status (control vs treated vs untreated)
  * [Aim 3b Code For Specific Groups](Aim3b_code_2.R) code modified to compare treatments as grouped in the same way as for Core Microbiome Analysis:
