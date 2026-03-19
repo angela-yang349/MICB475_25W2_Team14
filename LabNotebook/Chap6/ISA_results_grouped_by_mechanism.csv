@@ -1,9 +1,0 @@
-"ASV","s.Healthy Control","s.Immunomodulators","s.Lymphocyte","s.Untreated PMS","index","stat","p.value","Domain","Phylum","Class","Order","Family","Genus","Species"
-"7ef15f834ddeffade9a799c5697cc61a",0,0,1,0,3,0.365148371670111,0.01,"d__Bacteria","p__Bacillota","c__Clostridia","o__Oscillospirales","f__Oscillospiraceae","g__Flavonifractor",NA
-"1fce454895f8c69ce518629c6ecb6d74",0,0,1,0,3,0.24234305999999,0.035,"d__Bacteria","p__Bacillota","c__Clostridia","o__Oscillospirales","f__Oscillospiraceae","g__NK4A214_group",NA
-"adb9d2d551bbcd64743cf4c9884feb24",0,1,0,0,2,0.382133568446794,0.005,"d__Bacteria","p__Actinomycetota","c__Actinobacteria","o__Mycobacteriales","f__Corynebacteriaceae","g__Corynebacterium",NA
-"d52a0395431a1912fd52bda732cd2784",0,1,1,0,8,0.301526058549155,0.045,"d__Bacteria","p__Actinomycetota","c__Actinobacteria","o__Actinomycetales","f__Actinomycetaceae","g__Varibaculum",NA
-"78fbc957b543921f5c60511e75dc8ab8",0,1,0,0,2,0.330532855407654,0.025,"d__Bacteria","p__Bacteroidota","c__Bacteroidia","o__Bacteroidales","f__Prevotellaceae","g__Prevotellaceae_NK3B31_group",NA
-"3569638ef99ff21371c043793343e5aa",0,1,0,0,2,0.37811970916653,0.02,"d__Bacteria","p__Bacillota","c__Clostridia","o__Peptostreptococcales-Tissierellales","f__Family_XI","g__Finegoldia",NA
-"920b6f8c40bd672f3886550b5b842616",0,1,0,0,2,0.473965634975656,0.005,"d__Bacteria","p__Bacillota","c__Clostridia","o__Peptostreptococcales-Tissierellales","f__Family_XI","g__Anaerococcus",NA
-"33b19ddc04e29a0f6c55716d40551ec6",0,1,0,0,2,0.413209377775912,0.01,"d__Bacteria","p__Bacillota","c__Clostridia","o__Peptostreptococcales-Tissierellales","f__Family_XI","g__Peptoniphilus",NA
