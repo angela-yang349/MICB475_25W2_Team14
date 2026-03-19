@@ -11,9 +11,8 @@ Core Microbiome Analysis
 
 Indicator Species Analysis
  * [Aim 3b Code](Aim3b_code.R) - original code containing ungrouped treatments and grouping by treatment_status (control vs treated vs untreated)
- * [Aim 3b Code For Specific Groups](Aim3b_code_2.R) code modified to compare treatments as grouped in the same way as for Core Microbiome Analysis:
-   * drug type: a) DMF b) first line therapies: GA/IFN c) escalation therapies: ocrevus/fingolimod
-   * mechanism: a) Immunomodulators: GA/IFN/DMF b) Lymphocyte-targeting therapies: ocrevus/fingolimod
+ * [Aim 3b Code 2 Groups](Aim3b_code_group2.R) - code modified to compare grouped treatments (GA/IFN/DMF vs ocrevus/fingolimod)
+ * [Aim 3b Code 3 Groups](Aime3a_code_group3.R) - code modified to compare grouped treatments (DMF vs GA/IFN vs ocrevus/fingolimod)
 
 ## Methods:
 * Core Microbiome Analysis
@@ -46,9 +45,9 @@ Indicator Species Analysis
 
 ![ISA Grouped By Treatment Status](ISA_results_treatment_status.csv)
 
-![ISA 2 Treatment Groups](ISA_results_group2.html)
+![ISA 2 Treatment Groups](ISA_results_group2.csv)
 
-![ISA Grouped By Mechanism](ISA_results_grouped_by_mechanism.csv)
+![ISA 3 Treatment Groups](ISA_results_group3.csv)
 
 
 
