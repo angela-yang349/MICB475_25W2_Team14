@@ -19,9 +19,9 @@ Indicator Species Analysis
   * compare healthy controls vs untreated PMS vs treated PMS
   * compare healthy controls vs untreated PMS vs all the different PMS treatments
   * compare healthy controls vs untreated PMS vs immunomodulators (Glatiramer acetate, Interferon (IFN), Dimethyl fumarate) vs T/B cell treatments (Ocrevus (rituxan), Fingolimod)
-  *  * compare healthy controls vs untreated PMS vs immunomodulators (Glatiramer acetate, Interferon (IFN)) vs T/B cell treatments (Ocrevus (rituxan), Fingolimod) vs DMF
-  * abundance threshold of 0.001
-  * prevalence threshold of 0.5
+  * compare healthy controls vs untreated PMS vs immunomodulators (Glatiramer acetate, Interferon (IFN)) vs T/B cell treatments (Ocrevus (rituxan), Fingolimod) vs DMF
+  * * abundance threshold of 0.001
+  * * prevalence threshold of 0.5
 * Indicator Species Analysis
   * compare healthy controls vs untreated PMS vs treated PMS
   * compare healthy controls vs untreated PMS vs all the different PMS treatments
