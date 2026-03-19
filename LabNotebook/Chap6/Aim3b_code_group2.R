@@ -4,8 +4,6 @@
 library(tidyverse)
 library(phyloseq)
 library(indicspecies)
-install.packages("kableExtra")
-library(kableExtra)
 
 set.seed(100)
 
@@ -58,9 +56,3 @@ res_group2 <- isa_group2$sign %>%
 
 View(res_group2)
 write.csv(res_group2, "ISA_results_group2.csv", row.names = FALSE)
-
-html_group2 <- res_group2 %>%
-  kable(format = "html", table.attr = "border='1' style='border-collapse: collapse;'", escape = TRUE) %>%
-  kable_styling(full_width = FALSE, position = "left")
-
-save_kable(html_group2, "ISA_results_group2.html")
