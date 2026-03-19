@@ -46,7 +46,7 @@ Indicator Species Analysis
 
 ![ISA Grouped By Treatment Status](ISA_results_treatment_status.csv)
 
-![ISA Grouped By Drug Type](ISA_results_grouped_by_drug_type.csv)
+![ISA 2 Treatment Groups](ISA_results_group2.html)
 
 ![ISA Grouped By Mechanism](ISA_results_grouped_by_mechanism.csv)
 
