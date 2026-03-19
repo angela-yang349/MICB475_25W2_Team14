@@ -4,15 +4,15 @@
 Identify indicator taxa that are strongly associated with treatment status and specific treatment modalities in PMS patients
 
 ## Code:
-* Core Microbiome Analysis
+Core Microbiome Analysis
  * [Aim 3a Code](Aim3_code.R) - original code
  * [Aim 3a Code 2 Groups](Aim3a_code2.R) - code modified to compare grouped treatments (GA/IFN/DMF vs ocrevus/fingolimod)
  * [Aim 3a Code 3 Groups](Aime3a_code_3_groups.R) - code modified to compare grouped treatments (DMF vs GA/IFN vs ocrevus/fingolimod)
-* Indicator Species Analysis
+Indicator Species Analysis
  * [Aim 3b Code](Aim3b_code.R) - original code containing ungrouped treatments and grouping by treatment_status (control vs treated vs untreated)
  * [Aim 3b Code For Specific Groups](Aim3b_code_2.R) code modified to compare treatments as grouped in the same way as for Core Microbiome Analysis:
-  * drug type: a) DMF b) first line therapies: GA/IFN c) escalation therapies: ocrevus/fingolimod
-  * mechanism: a) Immunomodulators: GA/IFN/DMF b) Lymphocyte-targeting therapies: ocrevus/fingolimod
+   * drug type: a) DMF b) first line therapies: GA/IFN c) escalation therapies: ocrevus/fingolimod
+   * mechanism: a) Immunomodulators: GA/IFN/DMF b) Lymphocyte-targeting therapies: ocrevus/fingolimod
 
 ## Methods:
 * Core Microbiome Analysis
