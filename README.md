@@ -3,9 +3,9 @@
 ## Group 14 (Angela, Isabella, Sadaf, Lily, Trinity)
 
 ## Timeline
-* Project 2 proposal deadline: Feb. 22
-* Draft manuscript deadline: 
-* Final revised manuscript deadline: 
+* Project 2 proposal deadline: Feb. 22nd 2026
+* Draft manuscript deadline: Apr. 19th 2026
+* Final revised manuscript deadline: Apr. 26th 2026
 
 ![Timeline](/MeetingMinutes/Timeline.png)
 
@@ -18,7 +18,7 @@
 [February 3](/MeetingMinutes/Feb3.md) | [February 10](/MeetingMinutes/Feb10.md) | [February 24](/MeetingMinutes/Feb24.md)
 
 ### March
-[March 3](/MeetingMinutes/Mar3.md) | [March 10](/MeetingMinutes/Mar10.md) | [March 17](/MeetingMinutes/Mar17.md) | [March 24] | [March 31]
+[March 3](/MeetingMinutes/Mar3.md) | [March 10](/MeetingMinutes/Mar10.md) | [March 17](/MeetingMinutes/Mar17.md) | [March 24](/MeetingMinutes/Mar24.md) | [March 31](/MeetingMinutes/Mar31.md)
 
 ### April
 [April 7] | [April 14]

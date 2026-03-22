@@ -1,4 +1,5 @@
 # March 17th, 2026
+### !! meeting cancelled due to scheduling conflicts !!
 ## Agenda
 * Completed work:
   * Redid alpha and beta diversity for Aim 1 and 2 after removal of RRMS household controls
@@ -12,12 +13,5 @@
 * Questions:
   * Title ideas for the core microbiome venn diagrams/any changes to the venn diagrams?
 
-## Conclusions
 
-
-## Discussion
-
-
-## To-do
-- [ ] 
 
