@@ -11,7 +11,7 @@
 
 * Questions:
   * For DESeq2 analysis, only able to find significant ASVs if I use the raw phyloseq object before rarefaction. If I use the rarefied data, I get not significance at all and am unable to run the DESeq2 analysis
-  
+  * Should we re-run our Aim2 analysis (beta and alpha) again but using the same grouped treatments from the core microbiome and ISA?
 
 ## Conclusions
 
