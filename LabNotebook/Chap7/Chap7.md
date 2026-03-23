@@ -4,7 +4,7 @@
 To identify differentially abundant bacterial taxa between treated and untreated PMS patients, and between PMS patients and healthy controls, using DESeq2 differential abundance analysis
 
 ## Code:
-DESeq2: [Aim 4a Code](Chap7_deseq.R) - DESeq2 code
+[Aim 4a Code](Chap7_deseq.R) - DESeq2 code
 
 ## Methods:
 * DESeq2
