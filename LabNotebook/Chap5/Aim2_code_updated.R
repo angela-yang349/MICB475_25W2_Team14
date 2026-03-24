@@ -271,3 +271,81 @@ if(treatment_types_permanova$`Pr(>F)`[1] < 0.05) {
 #write.csv(pairwise_comparisons,
           #"LabNotebook/Chap5/updated_treatment_types_pairwise_permanova.csv",
           #row.names = FALSE)
+
+
+######## AIM 2 FINAL FIGURES #########
+#make sure to run everything before this to generate the figures
+
+### Figure 2A - Alpha diversity using individual treatments
+final_fig2A <- ggplot(Aim2_alpha_samp_and_richness, aes(x = treatments, y = Shannon)) +
+  stat_boxplot(geom = "errorbar", width = 0.2) +
+  geom_boxplot(aes(fill = treatments)) +
+  scale_fill_manual(values = c(
+    "Control" = "#e41a1c",
+    "Dimethyl fumarate" = "#377eb8",
+    "Fingolimod" = "#4daf4a",
+    "Glatiramer acetate" = "#984ea3",
+    "Interferon" = "#ff7f00",
+    "Ocrevus (Rituxan)" = "#a65628",
+    "Untreated" = "#999999"
+  )) +
+  labs(x = "Treatment", y = "Shannon Diversity Index") +
+  ylim(0.0, 2.5) +
+  theme_classic(base_size = 16) +
+  theme(
+    axis.title = element_text(size = 24),
+    axis.title.y = element_text(margin = margin(r = 15)),  # adds space from axis
+    axis.text = element_text(size = 20),
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    plot.margin = margin(t = 10, r = 20, b = 10, l = 20),  # extra breathing room
+    legend.position = "none"
+  )
+
+final_fig2A
+
+#ggsave("LabNotebook/Chap5/final_fig2A.png", final_fig2A, height = 8, width = 12)
+
+
+### Figure 2B - Beta diversity using individual treatments
+# Calculate percent variance
+percent_var2 <- pms_treatments_wunifrac_pcoa$values$Relative_eig[1:2] * 100
+
+axis_labels <- c(
+  paste0("Axis 1 [", round(percent_var2[1], 1), "%]"),
+  paste0("Axis 2 [", round(percent_var2[2], 1), "%]")
+)
+
+# Create plot with solid ellipses
+final_fig2B <- plot_ordination(
+  ms_rare_no_RRMS_ctrl, 
+  treatment_wunifrac_pcoa, 
+  color = "treatments"
+) +
+  geom_point(size = 2) +
+  stat_ellipse(aes(color = treatments), type = "norm", size = 0.8) +
+  scale_color_manual(values = c(
+    "Control" = "#e41a1c",
+    "Dimethyl fumarate" = "#377eb8",
+    "Fingolimod" = "#4daf4a",
+    "Glatiramer acetate" = "#984ea3",
+    "Interferon" = "#ff7f00",
+    "Ocrevus (Rituxan)" = "#a65628",
+    "Untreated" = "#999999"
+  )) +
+  labs(
+    x = axis_labels[1],
+    y = axis_labels[2], 
+    color = "Treatments"
+  ) +
+  theme_classic() +
+  theme(
+    legend.position = "right",
+    axis.title = element_text(size = 24),
+    axis.text = element_text(size = 22),
+    legend.title = element_text(size = 22),
+    legend.text = element_text(size = 20)
+  )
+
+final_fig2B
+
+#ggsave("LabNotebook/Chap5/final_fig2B.png", final_fig2B, height = 8, width = 12)

@@ -214,3 +214,68 @@ if(treatment_permanova$`Pr(>F)`[1] < 0.05) {
 #write.csv(pairwise_results, 
           #"LabNotebook/Chap4/updated_treatment_pairwise_permanova.csv", 
           #row.names = FALSE)
+
+######## AIM 1 FINAL FIGURES #########
+#make sure to run everything before this to generate the figures
+
+### Figure 1A - Alpha diversity using treatment status
+
+# Alpha diversity plot (no p-value annotations)
+final_fig1A <- ggplot(Aim1_alpha_samp_and_richness, aes(x = treatment_status, y = Shannon)) +
+  stat_boxplot(geom = "errorbar", width = 0.2) +
+  geom_boxplot(aes(fill = treatment_status)) +
+  scale_fill_manual(values = c(
+    "Control" = "#e31a1c",
+    "Treated" = "#33a02c",
+    "Untreated" =  "#1f78b4"
+  )) +
+  labs(x = "Treatment Status", y = "Shannon Diversity Index") +
+  ylim(0.4, 2.1) +
+  theme_classic(base_size = 16) +  # increase overall base font
+  theme(
+    axis.title = element_text(size = 24),   # axis labels
+    axis.text = element_text(size = 22),    # tick labels
+    legend.position = "none"
+  )
+
+final_fig1A
+
+#ggsave("LabNotebook/Chap4/final_fig1A.png", final_fig1A, height = 8, width = 12)
+
+
+### Figure 1B - Beta diversity using treatment status
+# Extract percent variance explained
+percent_var <- treatment_wunifrac_pcoa$values$Relative_eig[1:2] * 100
+axis_labels <- c(
+  paste0("Axis 1 [", round(percent_var[1], 1), "%]"),
+  paste0("Axis 2 [", round(percent_var[2], 1), "%]")
+)
+
+# Create plot with solid ellipses
+final_fig1B <- plot_ordination(ms_rare_no_RRMS_ctrl, 
+                                       treatment_wunifrac_pcoa, 
+                                       color = "treatment_status") +
+  geom_point(size = 2) +
+  stat_ellipse(type = "norm", size = 0.8) +   # solid ellipse lines
+  scale_color_manual(values = c(
+    "Control" = "#e31a1c",
+    "Treated" = "#33a02c",
+    "Untreated" = "#1f78b4"
+  )) +
+  labs(
+    x = axis_labels[1],
+    y = axis_labels[2], 
+    color = "Treatment Status"
+  ) +
+  theme_classic() +
+  theme(
+    legend.position = "right",
+    axis.title = element_text(size = 24),
+    axis.text = element_text(size = 22),
+    legend.title = element_text(size = 22),
+    legend.text = element_text(size = 20)
+  )
+
+final_fig1B
+
+#ggsave("LabNotebook/Chap4/final_fig1B.png", final_fig1B, height = 8, width = 12)
