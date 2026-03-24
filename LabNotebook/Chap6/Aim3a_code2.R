@@ -68,3 +68,15 @@ venn_mechanism_1 <- ggVennDiagram(venn_list,
   scale_fill_gradient(low = "grey90", high = "steelblue")
 
 ggsave("LabNotebook/Chap6/venn_mechanism_1.png", venn_mechanism_1, width = 12, height =15)
+
+# find unique ASVs
+lymph_unique <- setdiff(ms_lymphocyte_ASVs, union(ms_control_ASVs, union(ms_untreated_ASVs, ms_immunomod_ASVs)))
+lymph_unique
+
+immuno_unique <- setdiff(ms_immunomod_ASVs, union(ms_control_ASVs, union(ms_untreated_ASVs, ms_lymphocyte_ASVs)))
+immuno_unique
+
+immuno_lymph_shared <- intersect (ms_immunomod_ASVs, ms_lymphocyte_ASVs)
+exclude <- union (ms_control_ASVs, ms_untreated_ASVs)
+lymph_immuno_only <- setdiff(immuno_lymph_shared, exclude)
+lymph_immuno_only
