@@ -16,7 +16,7 @@
   * Should our preliminary test be a supplementary figure?
   * How do we edit the Venn diagram to make it ready for the paper?
   * What grouping should we go with for the rest of our analyses?
-    *Not enough data for Ocrevus (Rituxan) - only 2 points
+    * Not enough data for Ocrevus (Rituxan) - only 2 points
 
 ## Conclusions
 
