@@ -22,6 +22,7 @@ Indicator Species Analysis
   * compare healthy controls vs untreated PMS vs immunomodulators (Glatiramer acetate, Interferon (IFN)) vs T/B cell treatments (Ocrevus (rituxan), Fingolimod) vs DMF
     * abundance threshold of 0.001
     * prevalence threshold of 0.5
+  * identified unique ASVs
 * Indicator Species Analysis
   * compare healthy controls vs untreated PMS vs treated PMS
   * compare healthy controls vs untreated PMS vs all the different PMS treatments
@@ -36,6 +37,24 @@ Indicator Species Analysis
 ![MS Venn Diagram with Treatments](ms_venn_specific_treatments.png)
 
 ![MS Venn Diagram 2 Treatment Groups](venn_mechanism_1.png)
+
+Lymphocyte:
+|ASV |Taxa|
+|----|----|
+|5e22ac39af6385a9a5d7a57992e0d8ba |d__Bacteria; p__Bacteroidota; c__Bacteroidia; o__Bacteroidales; f__Rikenellaceae; g__Alistipes| 
+|c073917b4d37d0b4f65cf4fb1b43619e|d__Bacteria; p__Bacteroidota; c__Bacteroidia; o__Bacteroidales; f__Bacteroidaceae; g__Bacteroides|
+|ce7260fe3f31c7fa47ae17dc33d2b8f7|d__Bacteria; p__Bacillota; c__Clostridia; o__Oscillospirales; f__Ruminococcaceae; g__Ruthenibacterium|
+|73e5b567bf8428743df8b7f78c8ec1b0|d__Bacteria; p__Bacillota; c__Clostridia; o__Oscillospirales; f__Ruminococcaceae; g__[Eubacterium]_siraeum_group|
+
+Immunomodulators:
+|ASV |Taxa|
+|----|----|
+|d52a0395431a1912fd52bda732cd2784|d__Bacteria; p__Actinomycetota; c__Actinobacteria; o__Actinomycetales; f__Actinomycetaceae; g__Varibaculum|
+
+Shared between lymphocyte and immunomodulators:
+|ASV |Taxa|
+|----|----|
+|fc89b71ba14dc877e9e8527e6ed60391|d__Bacteria; p__Bacillota; c__Clostridia; o__Oscillospirales; f__Oscillospiraceae; g__Oscillibacter|
 
 ![MS Venn Diagram 3 Treatment Groups](venn_3_groups.png)
 
