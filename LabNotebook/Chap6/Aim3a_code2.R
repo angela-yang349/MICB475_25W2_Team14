@@ -30,7 +30,7 @@ sample_data(ms_phyloseq)$group4 <- case_when(
 table(sample_data(ms_phyloseq)$group4, useNA = "ifany")
 
 ms_groups <- subset_samples(ms_phyloseq, !is.na(group4))
-ms_groups <- prune_taxa(taxa_sums(ps_groups) > 0, ps_groups)
+ms_groups <- prune_taxa(taxa_sums(ms_groups) > 0, ms_groups)
 
 phyloseq_RA <- transform_sample_counts(ms_groups, function(x) x / sum(x))
 
