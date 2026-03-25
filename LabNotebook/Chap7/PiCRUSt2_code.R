@@ -1,11 +1,11 @@
 # Load libraries
 library(tidyverse)
 library(phyloseq)
-library(ggplot2)
-library(RColorBrewer)
-library(patchwork)
 library(ggpicrust2)
-library(pheatmap)
 
+# load in data (use non-rarified data)
+load("LabNotebook/Chap3/ms_phyloseq.RData")
 
+# remove all control
+pms_phyloseq <- subset_samples(ms_phyloseq, disease_course != "Control")
 
