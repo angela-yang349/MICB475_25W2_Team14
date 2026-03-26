@@ -40,8 +40,6 @@ Kruskal-Wallis rank sum test results: [kruskal_treatments](/corrected_kruskal_tr
 * Overall PERMANOVA results: [treatment_types_permanova_results](/updated_treatment_types_permanova_results.csv) - after RRMS_household_controls were removed
 
 Pairwise PERMANOVA comparisons revealed that several treatment groups showed nominally significant microbiome differences before correction for multiple testing, including glatiramer acetate versus healthy controls (R² = 0.024, p = 0.025), glatiramer acetate versus untreated PMS patients (R² = 0.026, p = 0.047), and fingolimod versus healthy controls (R² = 0.019, p = 0.047). 
-However, after FDR correction for 11 pairwise comparisons, none of these differences remained statistically significant (all p_FDR > 0.05).
-Effect sizes remained small across all comparisons (R² < 0.03).
 
 * Pairwise PERMANOVA results: [treatment_types_pairwise_permanova](/treatment_types_pairwise_permanova.csv) - original
 * Pairwise PERMANOVA results: [treatment_types_pairwise_permanova](/updated_treatment_types_pairwise_permanova.csv) - after RRMS_household_controls were removed
