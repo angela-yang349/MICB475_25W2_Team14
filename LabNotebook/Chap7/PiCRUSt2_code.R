@@ -68,7 +68,7 @@ daa_tb_annot <- pathway_annotation(pathway = "KO",
 saveRDS(daa_immuno_annot, "LabNotebook/Chap7/daa_immuno_annot.rds")
 saveRDS(daa_tb_annot, "LabNotebook/Chap7/daa_tb_annot.rds")
 
-############################ plots!
+############################ plots! (please help me fix them :0)
 
 ## plot immunomodulators vs. untreated
 plot_immuno <- daa_immuno_annot %>%
