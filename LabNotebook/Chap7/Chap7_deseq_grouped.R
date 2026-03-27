@@ -67,46 +67,161 @@ res_tb_untreated <- results(dds_tb_untreated,
                             tidy = TRUE
 )
 
+# function to attach taxonomy (Species preferred, fallback to Genus then Family)
+add_taxonomy <- function(res_df, physeq_obj) {
+  tax_df <- as.data.frame(tax_table(physeq_obj)) %>%
+    rownames_to_column("row")
+  
+  res_df %>%
+    left_join(tax_df, by = "row") %>%
+    mutate(
+      TaxaLabel = case_when(
+        !is.na(Species) & Species != "" ~ Species,
+        !is.na(Genus) & Genus != "" ~ Genus,
+        !is.na(Family) & Family != "" ~ Family,
+        TRUE ~ row
+      )
+    )
+}
+
+res_immuno_untreated_tax <- add_taxonomy(res_immuno_untreated, ms_immuno_untreated)
+res_tb_untreated_tax     <- add_taxonomy(res_tb_untreated, ms_tb_untreated)
 
 ## Create Volcano Plots ##
 
-make_volcano <- function(res_df, title_text) {
-  res_df %>%
+#Volcano plot with fc cutoff of 3.5
+make_volcano_refined <- function(res_df, title_text, top_n_labels = 5) {
+  
+  fc_cutoff <- 3
+  padj_cutoff <- 1e-4
+  
+  large_label <- paste0("Large Effect (|log2FC| > ", fc_cutoff, ")")
+  moderate_label <- "Moderate Effect (|log2FC| > 1)"
+  small_label <- "Small Effect"
+  
+  df <- res_df %>%
     filter(!is.na(padj)) %>%
     mutate(
-      Significance = case_when(
-        padj < 0.05 & abs(log2FoldChange) > 3 ~ "Large Effect (|FC| > 2.5)",
-        padj < 0.05 & abs(log2FoldChange) > 1 ~ "Moderate Effect (|FC| > 1)",
-        padj < 0.05 ~ "Small Effect",
-        TRUE ~ "Not Significant"
-      ),
       neg_log10_padj = -log10(padj),
-      label = ifelse(padj < 0.05 & abs(log2FoldChange) > 3, row, NA)
-    ) %>%
-    ggplot(aes(x = log2FoldChange, y = neg_log10_padj, color = Significance)) +
-    geom_point(alpha = 0.7) +
-    geom_text_repel(aes(label = label), na.rm = TRUE, size = 3) +
+      Significance = case_when(
+        padj < padj_cutoff & abs(log2FoldChange) > fc_cutoff ~ large_label,
+        padj < 0.05 & abs(log2FoldChange) > 1 ~ moderate_label,
+        padj < 0.05 ~ small_label,
+        TRUE ~ "Not Significant"
+      )
+    )
+  
+  label_df <- df %>%
+    filter(Significance == large_label) %>%
+    arrange(padj) %>%
+    slice_head(n = top_n_labels)
+  
+  ggplot(df, aes(x = log2FoldChange, y = neg_log10_padj)) +
+    geom_point(aes(color = Significance), alpha = 0.7, size = 2) +
+    geom_vline(xintercept = c(-fc_cutoff, fc_cutoff), linetype = "dashed") +
+    geom_hline(yintercept = -log10(padj_cutoff), linetype = "dashed") +
+    geom_text_repel(
+      data = label_df,
+      aes(label = TaxaLabel),
+      size = 3,
+      max.overlaps = Inf
+    ) +
+    scale_color_manual(values = c(
+      setNames("red", large_label),
+      setNames("orange", moderate_label),
+      setNames("blue", small_label),
+      "Not Significant" = "grey"
+    )) +
     labs(
       title = title_text,
       x = "Log2 Fold Change",
-      y = "-log10(adjusted p-value)"
+      y = "-log10(adjusted p-value)",
+      color = "Significance"
     ) +
     theme_minimal()
 }
 
-volcano_immuno <- make_volcano(res_immuno_untreated, "Immunomodulators vs Untreated")
+volcano_immuno <- make_volcano_refined(
+  res_immuno_untreated_tax,
+  "Immunomodulators vs Untreated",
+  top_n_labels = 20
+)
 volcano_immuno
 
-volcano_tb <- make_volcano(res_tb_untreated, "T/B Cell Therapies vs Untreated")
+volcano_tb <- make_volcano_refined(
+  res_tb_untreated_tax,
+  "T/B Cell Therapies vs Untreated",
+  top_n_labels = 20
+)
 volcano_tb
 
-ggsave("LabNotebook/Chap7/deseq2_volcano_immuno_vs_untreated.png", 
+
+#Volcano plot with fc cutoff of 4
+make_volcano_strict <- function(res_df, title_text, top_n_labels = 5) {
+  
+  fc_cutoff <- 4
+  padj_cutoff <- 1e-4
+  
+  large_label <- paste0("Large Effect (|log2FC| > ", fc_cutoff, ")")
+  moderate_label <- "Moderate Effect (|log2FC| > 1)"
+  small_label <- "Small Effect"
+  
+  df <- res_df %>%
+    filter(!is.na(padj)) %>%
+    mutate(
+      neg_log10_padj = -log10(padj),
+      Significance = case_when(
+        padj < padj_cutoff & abs(log2FoldChange) > fc_cutoff ~ large_label,
+        padj < 0.05 & abs(log2FoldChange) > 1 ~ moderate_label,
+        padj < 0.05 ~ small_label,
+        TRUE ~ "Not Significant"
+      )
+    )
+  
+  label_df <- df %>%
+    filter(Significance == large_label) %>%
+    arrange(padj) %>%
+    slice_head(n = top_n_labels)
+  
+  ggplot(df, aes(x = log2FoldChange, y = neg_log10_padj)) +
+    geom_point(aes(color = Significance), alpha = 0.7, size = 2) +
+    geom_vline(xintercept = c(-fc_cutoff, fc_cutoff), linetype = "dashed") +
+    geom_hline(yintercept = -log10(padj_cutoff), linetype = "dashed") +
+    geom_text_repel(
+      data = label_df,
+      aes(label = TaxaLabel),
+      size = 3,
+      max.overlaps = Inf
+    ) +
+    scale_color_manual(values = c(
+      setNames("red", large_label),
+      setNames("orange", moderate_label),
+      setNames("blue", small_label),
+      "Not Significant" = "grey"
+    )) +
+    labs(
+      title = title_text,
+      x = "Log2 Fold Change",
+      y = "-log10(adjusted p-value)",
+      color = "Significance"
+    ) +
+    theme_classic()
+}
+
+volcano_immuno <- make_volcano_strict(res_immuno_untreated_tax, "Immunomodulators vs Untreated")
+volcano_immuno
+
+volcano_tb <- make_volcano_strict(res_tb_untreated_tax, "T/B Cell Therapies vs Untreated")
+volcano_tb
+
+
+ggsave("LabNotebook/Chap7/deseq2_4cutoff_volcano_immuno_vs_untreated.png", 
        volcano_immuno, 
        width = 10, 
        height = 8, 
        dpi = 300)
 
-ggsave("LabNotebook/Chap7/deseq2_volcano_TBcell_vs_untreated.png", 
+ggsave("LabNotebook/Chap7/deseq2_4cutoff_volcano_TBcell_vs_untreated.png", 
        volcano_tb, 
        width = 10, 
        height = 8, 
