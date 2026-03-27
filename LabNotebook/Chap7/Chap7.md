@@ -21,4 +21,8 @@ To identify differentially abundant bacterial taxa between treated and untreated
 
 ![Volcano Plot: Untreated PMS vs Healthy Control](deseq2_volcano_untreated_vs_control_RAW.png)
 
+![Volcano Plot: Immunomodulators vs Untreated PMS](deseq2_volcano_immuno_vs_untreated.png)
+
+![Volcano Plot: Immunomodulators vs Untreated PMS](deseq2_volcano_TBcell_vs_untreated.png)
+
 

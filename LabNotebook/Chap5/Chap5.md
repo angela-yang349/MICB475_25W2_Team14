@@ -43,3 +43,14 @@ Pairwise PERMANOVA comparisons revealed that several treatment groups showed nom
 
 * Pairwise PERMANOVA results: [treatment_types_pairwise_permanova](/treatment_types_pairwise_permanova.csv) - original
 * Pairwise PERMANOVA results: [treatment_types_pairwise_permanova](/updated_treatment_types_pairwise_permanova.csv) - after RRMS_household_controls were removed
+
+### Alpha and beta diversity untreated PMS vs. grouped treatment mechanisms 
+* Treatment mechanisms: 
+  * Immunomodulators (Glatiramer acetate, Interferon (IFN), Dimethyl fumarate)  
+  * T/B cell treatments (Ocrevus (rituxan), Fingolimod)
+
+![grouped_treatments_shannon_plot](grouped_treatments_shannon_plot.png)
+
+![grouped_treatments_beta_pcoa_with_ellipses](grouped_treatments_beta_pcoa_with_ellipses.png)
+
+Pairwise PERMANOVA results: [grouped_treatments_pairwise_permanova](/grouped_treatments_pairwise_permanova.csv)
