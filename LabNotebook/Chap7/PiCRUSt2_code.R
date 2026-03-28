@@ -70,26 +70,38 @@ saveRDS(daa_tb_annot, "LabNotebook/Chap7/daa_tb_annot.rds")
 
 ############################ plots! (please help me fix them :0)
 
+glimpse(daa_immuno_annot)
+glimpse(daa_tb_annot)
+
+summary(daa_immuno_annot)
+summary(daa_tb_annot)
+
 ## plot immunomodulators vs. untreated
 plot_immuno <- daa_immuno_annot %>%
   filter(p_adjust < 0.05) %>%             # only significant pathways
-  arrange(desc(log2_fold_change)) %>%       # sort by fold change
+  arrange(desc(abs(log2FoldChange))) %>%       # sort by fold change
   head(20) %>%                            # top 20 pathways
-  ggplot(aes(x = reorder(pathway_name, log2_fold_change), y = log2_fold_change)) +
+  ggplot(aes(x = reorder(pathway_name, log2FoldChange), y = log2FoldChange)) +
   geom_col(fill = "steelblue") +
   coord_flip() +                          # horizontal bars
   labs(x = "Pathway",
-       y = "Log2 Fold Change")
+       y = "Log2 Fold Change",
+       title = "Immunomodulators vs Untreated")
 plot_immuno
+
 
 ## plot t and b cell vs. untreated
 plot_tb <- daa_tb_annot %>%
-  filter(p_adjust < 0.05) %>%             # only significant pathways
-  arrange(desc(log2_fold_change)) %>%       # sort by fold change
+  # filter(p_adjust < 1) %>%             # only significant pathways
+  arrange(desc(abs(log2FoldChange))) %>%       # sort by fold change
   head(20) %>%                            # top 20 pathways
-  ggplot(aes(x = reorder(pathway_name, log2_fold_change), y = log2_fold_change)) +
+  ggplot(aes(x = reorder(pathway_name, log2FoldChange), y = log2FoldChange)) +
   geom_col(fill = "steelblue") +
   coord_flip() +                          # horizontal bars
   labs(x = "Pathway",
        y = "Log2 Fold Change")
 plot_tb
+
+# save plots
+ggsave("immuno_vs_untreated_picrust.png", plot = plot_immuno, width = 8, height = 6, dpi = 300)
+
