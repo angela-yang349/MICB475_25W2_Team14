@@ -59,25 +59,21 @@ Shared between lymphocyte and immunomodulators:
 ![MS Venn Diagram 3 Treatment Groups](venn_3_groups.png)
 
 ### Indicator species analysis:
+Stat values must be 0.7 or above and indicator genuses should only belong to one group in order to be an indicator.
 
 ![ISA Ungrouped](ISA_results.csv)
 Summary
-* 4 indicator genuses found with Glatiramer acetate: Varibaculum, Escherichia-Shigella, Anaerococcus, Peptococcus
-* 2 indicator genuses found with Fingolimod: Incertae_Sedis, Flavonifractor
-* 1 indicator genus found with both Glatiramer and Fingolimod: Barnesiella
+* 1 indicator genus found with Glatiramer acetate: VaribaPeptococcus
 
 ![ISA Grouped By Treatment Status](ISA_results_treatment_status.csv)
 Summary
-* 6 indicator genuses found with Treated: Fenollaria, Flavonifractor, Varibaculum, Prevotellaceae_NK3B31_group, Anaerococcus, Peptoniphilus
-* 1 indicator genus found with Control: Fusicatenibacter
-* 1 indicator genus found with both Untreated and Treated: Akkermansia
+* no indicators found
 
 ![ISA 2 Treatment Groups](ISA_results_group2.csv)
 Summary
-* 1 indicator genus found with Lymphocyte activators (Ocrevus/Fingolimod): Alistipes
+* no indicators found
 
 ![ISA 3 Treatment Groups](ISA_results_group3.csv)
 Summary
-* 1 indicator genus found with DMF: Ruminococcus
-
+* no indicators found
 
