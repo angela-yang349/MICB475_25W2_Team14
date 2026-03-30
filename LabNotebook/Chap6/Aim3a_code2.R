@@ -19,7 +19,7 @@ sample_data(ms_phyloseq)$group4 <- case_when(
   sample_data(ms_phyloseq)$treatments %in% c(
     "ocrevus(rituxan)",
     "Fingolimod"
-  ) ~ "Lymphoctye",
+  ) ~ "Lymphocyte",
   
   sample_data(ms_phyloseq)$treatments == "Untreated" ~ "Untreated PMS",
   sample_data(ms_phyloseq)$treatments == "Control" ~ "Healthy Control",
@@ -35,7 +35,7 @@ ms_groups <- prune_taxa(taxa_sums(ms_groups) > 0, ms_groups)
 phyloseq_RA <- transform_sample_counts(ms_groups, function(x) x / sum(x))
 
 ms_immunomod <- subset_samples(phyloseq_RA, group4 == "Immunomodulators")
-ms_lymphocyte <- subset_samples(phyloseq_RA, group4 == "Lymphoctye")
+ms_lymphocyte <- subset_samples(phyloseq_RA, group4 == "Lymphocyte")
 ms_pms_untreated <- subset_samples(phyloseq_RA, group4 == "Untreated PMS")
 ms_hc <- subset_samples(phyloseq_RA, group4 == "Healthy Control")
 
@@ -61,11 +61,17 @@ venn_list <- (x= list(
   Control = ms_control_ASVs
 ))
 
+
 venn_mechanism_1 <- ggVennDiagram(venn_list,
-              label = "count",
-              label_alpha = 0
+                                  label = "count",
+                                  label_alpha = 0
 ) +
-  scale_fill_gradient(low = "grey90", high = "steelblue")
+  scale_fill_gradient(low = "grey90", high = "steelblue") +
+  theme(
+    text = element_text(size = 30),          # overall text size
+    legend.text = element_text(size = 13),
+    legend.title = element_text(size = 14)
+  )
 
 ggsave("LabNotebook/Chap6/venn_mechanism_1.png", venn_mechanism_1, width = 12, height =15)
 
