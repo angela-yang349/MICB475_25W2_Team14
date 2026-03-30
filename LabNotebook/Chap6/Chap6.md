@@ -63,7 +63,7 @@ Stat values must be 0.7 or above and indicator genuses should only belong to one
 
 ![ISA Ungrouped](ISA_results.csv)
 Summary
-* 1 indicator genus found with Glatiramer acetate: VaribaPeptococcus
+* 1 indicator genus found with Glatiramer acetate: Peptococcus
 
 ![ISA Grouped By Treatment Status](ISA_results_treatment_status.csv)
 Summary
