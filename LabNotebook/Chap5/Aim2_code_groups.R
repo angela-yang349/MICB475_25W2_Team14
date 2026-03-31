@@ -27,13 +27,25 @@ GROUPING <- "treatment_mechanism_4grp"
 mechanism_alpha_plot <- plot_richness(ms_rare_no_RRMS_ctrl, 
                                       x = GROUPING, 
                                       measures = c("Shannon")) +
+  aes(fill = .data[[GROUPING]]) +  
   xlab("Treatment Mechanism") +
   ylab("Shannon Diversity Index") +
   geom_boxplot() +
+  scale_fill_manual(values = c(
+    "Healthy Control" = "#e31a1c",
+    "Untreated PMS" =  "#1f78b4",
+    "Immunomodulators" = "#800080",
+    "T/B Cell Therapies" = "#8A9A5B"
+  )) +
+  labs(fill = "Treatment Group") +
   geom_point() +
   ggtitle("Alpha Diversity Across Treatment Mechanism Groups") +
   theme_classic() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  theme(
+    axis.text.x = element_text(angle = 30, hjust = 1, size = 10),
+    axis.text.y = element_text(size = 10),   # ↓ make y-axis numbers smaller
+    axis.title = element_text(size = 10)
+  )
 mechanism_alpha_plot
 
 ggsave(paste0("LabNotebook/Chap5/grouped_treatments_shannon_plot.png"),
