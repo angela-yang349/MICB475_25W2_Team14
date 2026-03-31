@@ -203,3 +203,53 @@ ggsave("LabNotebook/Chap5/grouped_treatments_beta_pcoa_with_ellipses.png",
        width = 11, 
        height = 8, 
        dpi = 300)
+
+# Final Figure PCoA plot
+
+# Step 1: extract coordinates and create axis labels
+ordination_df <- plot_ordination(ms_rare_no_RRMS_ctrl, mechanism_wunifrac_pcoa, type = "samples", justDF = TRUE)
+
+axis_labels <- c(
+  paste0("Axis 1 [", round(percent_var[1], 1), "%]"),
+  paste0("Axis 2 [", round(percent_var[2], 1), "%]")
+)
+
+# Step 2: create plot from scratch
+mechanism_beta_plot_ellipses <- ggplot(ordination_df, aes(x = Axis.1, y = Axis.2, color = .data[[GROUPING]])) +
+  # Draw ellipses
+  stat_ellipse(aes(group = .data[[GROUPING]]),
+               type = "norm",
+               linetype = "solid",
+               size = 0.8,
+               alpha = 0.6) +
+  # Draw points manually (you can now set size super small)
+  geom_point(size = 1, alpha = 0.7) +
+  # Labels
+  labs( x = axis_labels[1],
+        y = axis_labels[2], 
+        color = "Treatment Group",
+        title = "Beta Diversity: Treatment Mechanism Groups",
+        subtitle = "PCoA with Weighted UniFrac Distance\nEllipses show 95% confidence intervals",
+        caption = "Significant pairwise differences (p < 0.05):\nImmunomodulators vs Control (p=0.022)\nT/B Cell vs Immunomodulators (p=0.038)") +
+  # Custom colors
+  scale_color_manual(values = c(
+    "Healthy Control" = "#e31a1c",
+    "Untreated PMS" = "#1f78b4",
+    "Immunomodulators" = "#800080",
+    "T/B Cell Therapies" = "#8A9A5B"
+  )) +
+  # Expand axes so points are less clustered
+  scale_x_continuous(expand = expansion(mult = 0.1)) +
+  scale_y_continuous(expand = expansion(mult = 0.1)) +
+  # Fixed aspect ratio
+  coord_fixed(ratio = 1) +
+  # Clean theme
+  theme_classic(base_size = 12) +
+  theme(
+    legend.position = "right",
+    plot.caption = element_text(hjust = 0, size = 9),
+    panel.background = element_rect(fill = "white", color = NA),
+    plot.background  = element_rect(fill = "white", color = NA)
+  )
+
+mechanism_beta_plot_ellipses
