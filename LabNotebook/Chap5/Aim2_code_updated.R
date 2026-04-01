@@ -276,8 +276,8 @@ if(treatment_types_permanova$`Pr(>F)`[1] < 0.05) {
 ######## AIM 2 FINAL FIGURES #########
 #make sure to run everything before this to generate the figures
 
-### Figure 2A - Alpha diversity using individual treatments
-final_fig2A <- ggplot(Aim2_alpha_samp_and_richness, aes(x = treatments, y = Shannon)) +
+### Figure S2A - Alpha diversity using individual treatments
+final_figS2A <- ggplot(Aim2_alpha_samp_and_richness, aes(x = treatments, y = Shannon)) +
   stat_boxplot(geom = "errorbar", width = 0.2) +
   geom_boxplot(aes(fill = treatments)) +
   scale_fill_manual(values = c(
@@ -286,8 +286,8 @@ final_fig2A <- ggplot(Aim2_alpha_samp_and_richness, aes(x = treatments, y = Shan
     "Fingolimod" = "#4daf4a",
     "Glatiramer acetate" = "#984ea3",
     "Interferon" = "#ff7f00",
-    "Ocrevus (Rituxan)" = "#a65628",
-    "Untreated" = "#999999"
+    "Ocrevus (Rituxan)" = "#999999",
+    "Untreated" = "#17334f"
   )) +
   labs(x = "Treatment", y = "Shannon Diversity Index") +
   ylim(0.0, 2.5) +
@@ -301,12 +301,12 @@ final_fig2A <- ggplot(Aim2_alpha_samp_and_richness, aes(x = treatments, y = Shan
     legend.position = "none"
   )
 
-final_fig2A
+final_figS2A
 
-#ggsave("LabNotebook/Chap5/final_fig2A.png", final_fig2A, height = 8, width = 12)
+#ggsave("LabNotebook/Chap5/final_figS2A.png", final_figS2A, height = 8, width = 12)
 
 
-### Figure 2B - Beta diversity using individual treatments
+### Figure S2B - Beta diversity using individual treatments
 # Calculate percent variance
 percent_var2 <- pms_treatments_wunifrac_pcoa$values$Relative_eig[1:2] * 100
 
@@ -316,9 +316,9 @@ axis_labels <- c(
 )
 
 # Create plot with solid ellipses
-final_fig2B <- plot_ordination(
+final_figS2B <- plot_ordination(
   ms_rare_no_RRMS_ctrl, 
-  treatment_wunifrac_pcoa, 
+  pms_treatments_wunifrac_pcoa, 
   color = "treatments"
 ) +
   geom_point(size = 2) +
@@ -329,8 +329,8 @@ final_fig2B <- plot_ordination(
     "Fingolimod" = "#4daf4a",
     "Glatiramer acetate" = "#984ea3",
     "Interferon" = "#ff7f00",
-    "Ocrevus (Rituxan)" = "#a65628",
-    "Untreated" = "#999999"
+    "Ocrevus (Rituxan)" = "#999999",
+    "Untreated" = "#17334f"
   )) +
   labs(
     x = axis_labels[1],
@@ -346,6 +346,6 @@ final_fig2B <- plot_ordination(
     legend.text = element_text(size = 20)
   )
 
-final_fig2B
+final_figS2B
 
-#ggsave("LabNotebook/Chap5/final_fig2B.png", final_fig2B, height = 8, width = 12)
+#ggsave("LabNotebook/Chap5/final_figS2B.png", final_figS2B, height = 8, width = 12)
