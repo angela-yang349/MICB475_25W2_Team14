@@ -4,7 +4,7 @@
   * Redid alpha and beta diversity for aim 2 with treatments grouped by mechanism
   * Identified taxa from core microbiome and polished Figure 3
   * Fixed Figure S2
-  * Ran PICrust - no results for T cell vs B cell
+  * Ran PICrust - no results for T cell/B cell vs Untreated
   
 * Upcoming work:
   * Polish Figure 4
