@@ -6,6 +6,7 @@ library(tidyverse)
 library(phyloseq)
 library(ggpicrust2)
 library(stringr)
+library(dplyr)
 
 ############################ data wrangling
 
@@ -70,7 +71,7 @@ daa_tb_annot <- pathway_annotation(pathway = "KO",
 #saveRDS(daa_immuno_annot, "LabNotebook/Chap7/daa_immuno_annot.rds")
 #saveRDS(daa_tb_annot, "LabNotebook/Chap7/daa_tb_annot.rds")
 
-############################ plots! (please help me fix them :0)
+############################ plots! 
 
 glimpse(daa_immuno_annot)
 glimpse(daa_tb_annot)
@@ -78,13 +79,22 @@ glimpse(daa_tb_annot)
 summary(daa_immuno_annot)
 summary(daa_tb_annot)
 
+#shortening the names of some variables
+daa_immuno_annot$pathway_name #to see the current pathway names
+daa_immuno_annot <- daa_immuno_annot %>%
+  mutate(pathway_name = recode(pathway_name,
+                               "TetR/AcrR family transcriptional regulator, transcriptional repressor for nem operon" = "TetR/AcrR transcriptional regulator, nem operon repressor",
+                               "L-erythrulose 1-kinase [EC:2.7.1.209]" = "L-erythrulose 1-kinase",
+                               "MoaE-MoaD fusion protein [EC:2.8.1.12]" = "MoaE-MoaD fusion protein"))
+
 ## plot immunomodulators vs. untreated
 plot_immuno <- daa_immuno_annot %>%
   filter(p_adjust < 0.05) %>%             # only significant pathways
   arrange(desc(abs(log2_fold_change))) %>%       # sort by fold change
   head(20) %>%                            # top 20 pathways
-  ggplot(aes(x = reorder(str_wrap(pathway_name, width = 30), log2_fold_change), y = log2_fold_change)) +
-  geom_col(fill = "steelblue") +
+  ggplot(aes(x = reorder(str_wrap(pathway_name, width = 30), log2_fold_change), y = log2_fold_change, fill = log2_fold_change > 0)) +
+  geom_col() +
+  scale_fill_manual(values = c("TRUE" = "#728cf2", "FALSE" = "#db5168")) +
   coord_flip() +                          # horizontal bars
   labs(x = "Pathway", 
        y = "Log2 Fold Change", 
@@ -95,7 +105,7 @@ plot_immuno <- daa_immuno_annot %>%
     axis.title.y = element_text(margin = margin(r = 15)),  # adds space from axis
     axis.text = element_text(size = 20),
     axis.text.x = element_text(size = 16),
-    axis.text.y = element_text(size = 10),
+    axis.text.y = element_text(size = 11),
     panel.grid.major.x = element_line(color = "grey80", size = 0.5),
     panel.grid.minor.x = element_line(color = "grey90", size = 0.3),
     plot.margin = margin(t = 10, r = 20, b = 10, l = 20),  # extra breathing room
@@ -127,6 +137,7 @@ plot_tb <- daa_tb_annot %>%
   )
 
 plot_tb
+#plot only shows N/A and thus will not be used
 
 # save plots
-#ggsave("immuno_vs_untreated_picrust.png", plot = plot_immuno, width = 8, height = 6, dpi = 300)
+#ggsave("LabNotebook/Chap7/final_fig4.png", plot = plot_immuno, width = 8, height = 6, dpi = 300)
