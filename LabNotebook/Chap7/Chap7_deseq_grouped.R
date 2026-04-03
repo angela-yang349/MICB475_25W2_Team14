@@ -200,7 +200,7 @@ make_volcano_strict <- function(res_df, title_text, top_n_labels = 5) {
     geom_text_repel(
       data = label_df,
       aes(label = TaxaLabel),
-      size = 3.5,
+      size = 4.5,
       max.overlaps = Inf,
       box.padding = 0.5,
       point.padding = 0.3,
@@ -219,7 +219,7 @@ make_volcano_strict <- function(res_df, title_text, top_n_labels = 5) {
       y = "-log10(adjusted p-value)",
       color = "Significance"
     ) +
-    theme_classic(base_size = 12) +
+    theme_classic(base_size = 18) +
     theme(
       legend.position = "right",
       plot.caption = element_text(hjust = 0, size = 9),
@@ -250,45 +250,3 @@ ggsave("LabNotebook/Chap7/deseq2_presentation_volcano_TBcell_vs_untreated.png",
        width = 10, 
        height = 8, 
        dpi = 300)
-
-#New volcano plot for figures
-volcano_tcell_immuno <- ggplot(volcano_data2, 
-                               aes(x = log2FoldChange, y = neg_log10_padj)) +
-  geom_point(aes(color = Significance), alpha = 0.7, size = 1) +
-  geom_vline(xintercept = c(-4, 4), linetype = "dashed", color = "gray40", size = 0.5) +
-  geom_hline(yintercept = -log10(1e-4), linetype = "dashed", color = "gray40", size = 0.5) +
-  geom_text_repel(
-    data = top_asvs2,
-    aes(label = row),
-    size = 3,
-    max.overlaps = 10,
-    box.padding = 0.5,
-    point.padding = 0.3,
-    segment.color = "gray50"
-  ) +
-  scale_color_manual(values = c(
-    "Large Effect (|log2FC| > 4)" = "#e31a1c",
-    "Moderate Effect (|log2FC| > 1)" = "#ff7f00",
-    "Small Effect" = "#1f78b4",
-    "Not Significant" = "gray70"
-  )) +
-  scale_x_continuous(expand = expansion(mult = 0.1)) +
-  scale_y_continuous(expand = expansion(mult = 0.1)) +
-  labs(
-    title = "Differential Abundance: T/B Cell Therapies vs Immunomodulators",
-    subtitle = paste0("Treatment mechanism comparison\n",
-                      "Significant ASVs (padj < 0.05): ", n_sig2),
-    x = "log2 Fold Change",
-    y = "-log10(adjusted p-value)",
-    color = "Significance"
-  ) +
-  theme_classic(base_size = 12) +
-  theme(
-    legend.position = "right",
-    plot.subtitle = element_text(size = 10),
-    panel.background = element_rect(fill = "white", color = NA),
-    plot.background = element_rect(fill = "white", color = NA),
-    legend.key = element_rect(fill = "white", color = NA)
-  )
-
-volcano_tcell_immuno
