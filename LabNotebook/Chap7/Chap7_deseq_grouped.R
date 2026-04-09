@@ -157,9 +157,9 @@ volcano_tb
 
 
 #Volcano plot with fc cutoff of 4
-make_volcano_strict <- function(res_df, title_text, top_n_labels = 5) {
+make_volcano_strict <- function(res_df, title_text, top_n_labels = 10) {
   
-  fc_cutoff <- 4
+  fc_cutoff <- 3
   padj_cutoff <- 1e-4
   
   large_label <- paste0("Large Effect (|log2FC| > ", fc_cutoff, ")")
@@ -239,13 +239,13 @@ volcano_tb <- make_volcano_strict(res_tb_untreated_tax, "T/B Cell Therapies vs U
 volcano_tb
 
 
-ggsave("LabNotebook/Chap7/deseq2_presentation_volcano_immuno_vs_untreated.png", 
+ggsave("LabNotebook/Chap7/deseq2_3cutoff_volcano_immuno_vs_untreated.png", 
        volcano_immuno, 
        width = 10, 
        height = 8, 
        dpi = 300)
 
-ggsave("LabNotebook/Chap7/deseq2_presentation_volcano_TBcell_vs_untreated.png", 
+ggsave("LabNotebook/Chap7/deseq2_3cutoff_volcano_TBcell_vs_untreated.png", 
        volcano_tb, 
        width = 10, 
        height = 8, 
