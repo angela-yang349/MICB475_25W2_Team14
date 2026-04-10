@@ -20,8 +20,6 @@
 ### March
 [March 3](/MeetingMinutes/Mar3.md) | [March 10](/MeetingMinutes/Mar10.md) | [March 17](/MeetingMinutes/Mar17.md) | [March 24](/MeetingMinutes/Mar24.md) | [March 31](/MeetingMinutes/Mar31.md)
 
-### April
-[April 7] | [April 14]
 
 ## Lab Notebook
 * [Chap.1](/LabNotebook/Chap1/Chap1.md) - Data Pre-processing
