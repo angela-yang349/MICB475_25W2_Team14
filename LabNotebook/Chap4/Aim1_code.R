@@ -29,10 +29,42 @@ spms_ppms_pcoa_plot <- plot_ordination(ms_rare_pms_only,
   theme_classic()
 spms_ppms_pcoa_plot
 
+#finalized plot for supplemental figure 1
+percent_var <- pms_only_wunifrac_pcoa$values$Relative_eig[1:2] * 100
+axis_labels <- c(
+  paste0("Axis 1 [", round(percent_var[1], 1), "%]"),
+  paste0("Axis 2 [", round(percent_var[2], 1), "%]")
+)
+
+final_Sfig1 <- plot_ordination(ms_rare_pms_only, 
+                               pms_only_wunifrac_pcoa, 
+                               color = "disease_course") +
+  geom_point(size = 2) +
+  stat_ellipse(type = "norm", size = 0.8) +   # solid ellipse lines
+  scale_color_manual(values = c(
+    "PPMS" = "#009E73",
+    "SPMS" = "#CC79A7"
+  )) +
+  labs(
+    x = axis_labels[1],
+    y = axis_labels[2], 
+    color = "Disease Course"
+  ) +
+  theme_classic() +
+  theme(
+    legend.position = "right",
+    axis.title = element_text(size = 22),
+    axis.text = element_text(size = 20),
+    legend.title = element_text(size = 20),
+    legend.text = element_text(size = 18)
+  )
+
+final_Sfig1
+
 ##only need to run the save codes once each
-#ggsave("LabNotebook/Chap4/spms_ppms_wunifrac_pcoa.png",
-       #spms_ppms_pcoa_plot,
-       #height = 4, width = 5)
+ggsave("LabNotebook/Chap4/Supplemental_fig1.png",
+       final_Sfig1,
+       height = 8, width = 12)
 
 # PERMANOVA test (SPMS vs PPMS)
 pms_only_metadata <- data.frame(sample_data(ms_rare_pms_only))
