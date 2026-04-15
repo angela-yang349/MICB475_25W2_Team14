@@ -322,6 +322,7 @@ final_figS2B <- plot_ordination(
   color = "treatments"
 ) +
   geom_point(size = 2) +
+  scale_y_continuous(breaks = seq(-0.5, 0.5, by = 0.25)) +
   stat_ellipse(aes(color = treatments), type = "norm", size = 0.8) +
   scale_color_manual(values = c(
     "Control" = "#e41a1c",
