@@ -281,3 +281,69 @@ mechanism_beta_plot_ellipses <- ggplot(ordination_df, aes(x = Axis.1, y = Axis.2
   )
 
 mechanism_beta_plot_ellipses
+
+# Final Figure 2C
+mechanism_alpha_plot <- plot_richness(ms_rare_no_RRMS_ctrl, 
+                                      x = GROUPING, 
+                                      measures = c("Shannon")) +
+  aes(fill = .data[[GROUPING]]) +  
+  xlab("Treatment Mechanism") +
+  ylab("Shannon Diversity Index") +
+  geom_boxplot() +
+  scale_fill_manual(values = c(
+    "Healthy Control" = "#e31a1c",
+    "Untreated PMS" =  "#1f78b4",
+    "Immunomodulators" = "#800080",
+    "T/B Cell Therapies" = "#8A9A5B"
+  )) +
+  labs(fill = "Treatment Group") +
+  geom_point() +
+  ggtitle("Alpha Diversity Across Treatment Mechanism Groups") +
+  theme_classic() +
+  theme(
+    axis.text.x = element_text(angle = 30, hjust = 1, size = 10),
+    axis.text.y = element_text(size = 10),   # ↓ make y-axis numbers smaller
+    axis.title = element_text(size = 10)
+  )
+mechanism_alpha_plot
+
+# Final Figure 2D
+
+# Extract percent variance explained for axis labels
+percent_var <- treatment_wunifrac_pcoa$values$Relative_eig[1:2] * 100
+axis_labels <- c(
+  paste0("Axis 1 [", round(percent_var[1], 1), "%]"),
+  paste0("Axis 2 [", round(percent_var[2], 1), "%]")
+)
+
+sample_data(ms_rare_no_RRMS_ctrl)$treatment_status <- factor(
+  sample_data(ms_rare_no_RRMS_ctrl)$treatment_status,
+  levels = c("Control", "Treated", "Untreated"),
+  labels = c("Healthy Control", "Treated PMS", "Untreated PMS")
+)
+
+# Create plot with solid ellipses
+treatment_beta_plot <- plot_ordination(ms_rare_no_RRMS_ctrl, 
+                                       treatment_wunifrac_pcoa, 
+                                       color = "treatment_status") +
+  geom_point(size = 2) +
+  stat_ellipse(type = "norm", size = 0.8) +   # solid ellipse lines
+  scale_color_manual(values = c(
+    "Healthy Control" = "#e31a1c",
+    "Treated PMS" = "#33a02c",
+    "Untreated PMS" = "#1f78b4"
+  )) +
+  labs(
+    x = axis_labels[1],
+    y = axis_labels[2], 
+    color = "Treatment Status"
+  ) +
+  theme_classic() +
+  theme(
+    legend.position = "right",
+    axis.title = element_text(size = 14),
+    axis.text = element_text(size = 12)
+  )
+
+treatment_beta_plot
+#export plot using preview
