@@ -282,7 +282,7 @@ mechanism_beta_plot_ellipses <- ggplot(ordination_df, aes(x = Axis.1, y = Axis.2
 
 mechanism_beta_plot_ellipses
 
-# Final Figure 2C
+# Final Figure 1C
 mechanism_alpha_plot <- plot_richness(ms_rare_no_RRMS_ctrl, 
                                       x = GROUPING, 
                                       measures = c("Shannon")) +
@@ -307,7 +307,7 @@ mechanism_alpha_plot <- plot_richness(ms_rare_no_RRMS_ctrl,
   )
 mechanism_alpha_plot
 
-# Final Figure 2D
+# Final Figure 1D
 
 # Extract percent variance explained for axis labels
 percent_var <- treatment_wunifrac_pcoa$values$Relative_eig[1:2] * 100
