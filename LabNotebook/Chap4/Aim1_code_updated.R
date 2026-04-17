@@ -180,31 +180,6 @@ if(treatment_permanova$`Pr(>F)`[1] < 0.05) {
                 ctrl_vs_treated$`Pr(>F)`[1])
   )
   
-  # FDR correction for multiple comparisons (Benjamini-Hochberg method)
-  pairwise_results$p_fdr <- p.adjust(pairwise_results$p_value, method = "BH")
-  
-  # Add significance indicator
-  pairwise_results$significant_fdr <- ifelse(pairwise_results$p_fdr < 0.05, "Yes", "No")
-  
-  cat("\n=== Pairwise Comparisons Summary ===\n")
-  print(pairwise_results)
-  
-  n_sig_unadjusted <- sum(pairwise_results$p_value < 0.05)
-  n_sig_fdr <- sum(pairwise_results$p_fdr < 0.05)
-  
-  # Display significant comparisons
-  if(n_sig_fdr > 0) {
-    cat("\n=== Significant Comparisons (FDR < 0.05) ===\n")
-    sig_comparisons <- pairwise_results[pairwise_results$p_fdr < 0.05, ]
-    for(i in 1:nrow(sig_comparisons)) {
-      cat(sig_comparisons$Comparison[i], 
-          ": R² =", round(sig_comparisons$R2[i], 4),
-          ", p =", round(sig_comparisons$p_value[i], 3),
-          ", p_FDR =", round(sig_comparisons$p_fdr[i], 3), "\n")
-    }
-  } else {
-    cat("\n=== No comparisons significant after FDR correction ===\n")
-  }
   
 } else {
   cat("\n=== Overall PERMANOVA not significant (p ≥ 0.05) ===\n")

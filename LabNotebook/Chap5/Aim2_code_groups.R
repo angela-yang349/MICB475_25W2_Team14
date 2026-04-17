@@ -48,7 +48,26 @@ mechanism_alpha_plot <- plot_richness(ms_rare_no_RRMS_ctrl,
   )
 mechanism_alpha_plot
 
-ggsave(paste0("LabNotebook/Chap5/grouped_treatments_shannon_plot.png"),
+#new plot
+mechanism_alpha_plot <- plot_richness(ms_rare_no_RRMS_ctrl, 
+                                      x = GROUPING, 
+                                      measures = c("Shannon")) +
+  aes(fill = .data[[GROUPING]]) +  
+  xlab("Treatment Mechanism") +
+  ylab("Shannon Diversity Index") +
+  geom_boxplot() +
+  labs(fill = "Treatment Group") +
+  geom_point() +
+  theme_classic() +
+  theme(
+    axis.text.x = element_text(angle = 30, hjust = 1, size = 10),
+    axis.text.y = element_text(size = 10),
+    axis.title = element_text(size = 10)
+  )
+
+mechanism_alpha_plot
+
+ggsave(paste0("LabNotebook/Chap5/new_grouped_treatments_shannon_plot.png"),
        mechanism_alpha_plot,
        height = 5, width = 8)
 
@@ -72,6 +91,15 @@ write.csv(data.frame(
 ), paste0("LabNotebook/Chap5/grouoped_treatments_alpha_kruskal_", GROUPING, ".csv"), 
 row.names = FALSE)
 
+#pairwise comparisons
+pairwise_results <- pairwise.wilcox.test(
+  mechanism_alpha_data$Shannon,
+  mechanism_alpha_data$treatment_mechanism_4grp
+)
+
+pairwise_results
+
+#no significant results
 
 ### BETA DIVERSITY ANALYSIS ###
 

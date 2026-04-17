@@ -3,6 +3,7 @@ library(tidyverse)
 library(phyloseq)
 library(vegan)
 library(ggsignif)
+library(dplyr)
 
 # Load rarefied data
 load("LabNotebook/Chap4/ms_rare_no_RRMS_ctrl.RData")
@@ -231,14 +232,6 @@ if(treatment_types_permanova$`Pr(>F)`[1] < 0.05) {
         ", p =", comparison_result$`Pr(>F)`[1], "\n")
   }
   
-  # FDR correction
-  pairwise_comparisons$p_fdr <- p.adjust(pairwise_comparisons$p_value, 
-                                         method = "BH")
-  
-  # Add significance indicators (FDR < 0.05)
-  pairwise_comparisons$significant_fdr <- ifelse(pairwise_comparisons$p_fdr < 0.05, 
-                                                 "Yes", "No")
-  
   # Sort by p-value
   pairwise_comparisons <- pairwise_comparisons[order(pairwise_comparisons$p_value), ]
   
@@ -248,25 +241,25 @@ if(treatment_types_permanova$`Pr(>F)`[1] < 0.05) {
   
   # Count significant comparisons
   n_sig_unadjusted <- sum(pairwise_comparisons$p_value < 0.05)
-  n_sig_fdr <- sum(pairwise_comparisons$p_fdr < 0.05)
   
-  # Visual summary of significant comparisons (FDR adjusted)
-  if(n_sig_fdr > 0) {
-    cat("\n=== Significant Comparisons (FDR < 0.05) ===\n")
-    sig_comparisons <- pairwise_comparisons[pairwise_comparisons$p_fdr < 0.05, ]
+  # Visual summary of significant comparisons (unadjusted)
+  if(n_sig_unadjusted > 0) {
+    cat("\n=== Significant Comparisons (p < 0.05) ===\n")
+    sig_comparisons <- pairwise_comparisons[pairwise_comparisons$p_value < 0.05, ]
     for(i in 1:nrow(sig_comparisons)) {
       cat(sig_comparisons$Comparison[i], 
           ": R² =", round(sig_comparisons$R2[i], 4),
-          ", p_FDR =", round(sig_comparisons$p_fdr[i], 4), "\n")
+          ", p =", round(sig_comparisons$p_value[i], 4), "\n")
     }
   } else {
-    cat("\n=== No comparisons remained significant after FDR correction ===\n")
+    cat("\n=== No comparisons were significant at p < 0.05 ===\n")
   }
   
 } else {
   cat("\n=== Overall PMS-only PERMANOVA not significant (p ≥ 0.05) ===\n")
   cat("Pairwise comparisons not performed.\n")
 }
+
 
 #write.csv(pairwise_comparisons,
           #"LabNotebook/Chap5/updated_treatment_types_pairwise_permanova.csv",
@@ -275,6 +268,27 @@ if(treatment_types_permanova$`Pr(>F)`[1] < 0.05) {
 
 ######## AIM 2 FINAL FIGURES #########
 #make sure to run everything before this to generate the figures
+
+#relabeling of treatment names
+Aim2_alpha_samp_and_richness <- Aim2_alpha_samp_and_richness %>%
+  mutate(treatments = recode(treatments,
+                             "control" = "Healthy Control",
+                             "Dimethyl fumarate" = "Dimethyl Fumarate",
+                             "Fingolimod" = "Fingolimod",
+                             "Glatiramer acetate" = "Glatiramer Acetate",
+                             "Interferon" = "Interferon",
+                             "ocrevus(rituxan)" = "Ocrevus/Rituxan",
+                             "Untreated" = "Untreated PMS"
+  )) %>%
+  mutate(treatments = factor(treatments, levels = c(
+    "Healthy Control",
+    "Dimethyl Fumarate",
+    "Glatiramer Acetate",
+    "Interferon",
+    "Ocrevus/Rituxan",
+    "Fingolimod",
+    "Untreated PMS"
+  )))
 
 ### Figure S2A - Alpha diversity using individual treatments
 final_figS2A <- ggplot(Aim2_alpha_samp_and_richness, aes(x = treatments, y = Shannon)) +
@@ -303,7 +317,25 @@ final_figS2A <- ggplot(Aim2_alpha_samp_and_richness, aes(x = treatments, y = Sha
 
 final_figS2A
 
-#ggsave("LabNotebook/Chap5/final_figS2A.png", final_figS2A, height = 8, width = 12)
+#New alpha plot
+final_figS2A <- ggplot(Aim2_alpha_samp_and_richness, aes(x = treatments, y = Shannon)) +
+  stat_boxplot(geom = "errorbar", width = 0.2) +
+  geom_boxplot(aes(fill = treatments)) +
+  labs(x = "Treatment", y = "Shannon Diversity Index") +
+  ylim(0.0, 2.5) +
+  theme_classic(base_size = 16) +
+  theme(
+    axis.title = element_text(size = 24),
+    axis.title.y = element_text(margin = margin(r = 15)),
+    axis.text = element_text(size = 20),
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    plot.margin = margin(t = 10, r = 20, b = 10, l = 20),
+    legend.position = "none"
+  )
+
+final_figS2A
+
+#ggsave("LabNotebook/Chap5/updated_final_figS2A.png", final_figS2A, height = 8, width = 12)
 
 
 ### Figure S2B - Beta diversity using individual treatments
@@ -349,4 +381,65 @@ final_figS2B <- plot_ordination(
 
 final_figS2B
 
-#ggsave("LabNotebook/Chap5/final_figS2B.png", final_figS2B, height = 8, width = 12)
+#changing labels and order
+sample_data(ms_rare_no_RRMS_ctrl)$treatments <- recode(
+  sample_data(ms_rare_no_RRMS_ctrl)$treatments,
+  "Control" = "Healthy Control",
+  "Dimethyl fumarate" = "Dimethyl Fumarate",
+  "Fingolimod" = "Fingolimod",
+  "Glatiramer acetate" = "Glatiramer Acetate",
+  "Interferon" = "Interferon",
+  "ocrevus(rituxan)" = "Ocrevus/Rituxan",
+  "Untreated" = "Untreated PMS"
+)
+
+sample_data(ms_rare_no_RRMS_ctrl)$treatments <- factor(
+  sample_data(ms_rare_no_RRMS_ctrl)$treatments,
+  levels = c(
+    "Healthy Control",
+    "Dimethyl Fumarate",
+    "Glatiramer Acetate",
+    "Interferon",
+    "Ocrevus/Rituxan",
+    "Fingolimod",
+    "Untreated PMS"
+  )
+)
+
+#New PcoA plot
+percent_var2 <- treatment_types_wunifrac_pcoa$values$Relative_eig[1:2] * 100
+
+axis_labels <- c(
+  paste0("Axis 1 [", round(percent_var2[1], 1), "%]"),
+  paste0("Axis 2 [", round(percent_var2[2], 1), "%]")
+)
+
+# Create plot with default colors
+final_figS2B <- plot_ordination(
+  ms_rare_no_RRMS_ctrl, 
+  treatment_types_wunifrac_pcoa, 
+  color = "Treatment Type"
+) +
+  geom_point(aes(color = treatments), size = 2) +
+  scale_y_continuous(
+    breaks = seq(-0.5, 0.5, by = 0.25),
+    limits = c(-0.55, 0.55)
+  ) +
+  stat_ellipse(aes(color = treatments), type = "norm", size = 0.8) +
+  labs(
+    x = axis_labels[1],
+    y = axis_labels[2], 
+    color = "Treatment Type"
+  ) +
+  theme_classic() +
+  theme(
+    legend.position = "right",
+    axis.title = element_text(size = 24),
+    axis.text = element_text(size = 22),
+    legend.title = element_text(size = 22),
+    legend.text = element_text(size = 20)
+  )
+
+final_figS2B
+
+ggsave("LabNotebook/Chap5/updated_final_figS2B.png", final_figS2B, height = 8, width = 12)
