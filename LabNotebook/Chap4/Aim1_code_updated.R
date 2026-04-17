@@ -196,26 +196,36 @@ if(treatment_permanova$`Pr(>F)`[1] < 0.05) {
 ### Figure 1A - Alpha diversity using treatment status
 
 # Alpha diversity plot (no p-value annotations)
+Aim1_alpha_samp_and_richness$treatment_status <- factor(
+  Aim1_alpha_samp_and_richness$treatment_status,
+  levels = c("Control", "Treated", "Untreated"),
+  labels = c("Healthy Control", "Treated PMS", "Untreated PMS")
+)
+
 final_fig1A <- ggplot(Aim1_alpha_samp_and_richness, aes(x = treatment_status, y = Shannon)) +
   stat_boxplot(geom = "errorbar", width = 0.2) +
   geom_boxplot(aes(fill = treatment_status)) +
   scale_fill_manual(values = c(
-    "Control" = "#e31a1c",
-    "Treated" = "#33a02c",
-    "Untreated" =  "#1f78b4"
+    "Healthy Control" = "#F08080",
+    "Treated PMS" = "#00BFFF",
+    "Untreated PMS" = "#FF69B4"
   )) +
   labs(x = "Treatment Status", y = "Shannon Diversity Index") +
   ylim(0.4, 2.1) +
-  theme_classic(base_size = 16) +  # increase overall base font
+  theme_classic(base_size = 16) +
   theme(
-    axis.title = element_text(size = 24),   # axis labels
-    axis.text = element_text(size = 22),    # tick labels
+    axis.title = element_text(size = 26),
+    axis.title.y = element_text(margin = margin(r = 15)),
+    axis.text.x = element_text(hjust = 0.5, size = 22),
+    axis.text.y = element_text(size = 22),
+    axis.line = element_line(linewidth = 1.2),
+    axis.ticks = element_line(linewidth = 1.2),
+    plot.margin = margin(t = 10, r = 20, b = 10, l = 20),
     legend.position = "none"
   )
-
 final_fig1A
 
-#ggsave("LabNotebook/Chap4/final_fig1A.png", final_fig1A, height = 8, width = 12)
+ggsave("LabNotebook/Chap4/new_final_fig1A.png", final_fig1A, height = 8, width = 14)
 
 
 ### Figure 1B - Beta diversity using treatment status
@@ -226,31 +236,40 @@ axis_labels <- c(
   paste0("Axis 2 [", round(percent_var[2], 1), "%]")
 )
 
-# Create plot with solid ellipses
+sample_data(ms_rare_no_RRMS_ctrl)$treatment_status <- factor(
+  sample_data(ms_rare_no_RRMS_ctrl)$treatment_status,
+  levels = c("Control", "Treated", "Untreated"),
+  labels = c("Healthy Control", "Treated PMS", "Untreated PMS")
+)
+
 final_fig1B <- plot_ordination(ms_rare_no_RRMS_ctrl, 
-                                       treatment_wunifrac_pcoa, 
-                                       color = "treatment_status") +
+                               treatment_wunifrac_pcoa, 
+                               color = "treatment_status") +
   geom_point(size = 2) +
-  stat_ellipse(type = "norm", size = 0.8) +   # solid ellipse lines
+  stat_ellipse(type = "norm", size = 1.2) +
   scale_color_manual(values = c(
-    "Control" = "#e31a1c",
-    "Treated" = "#33a02c",
-    "Untreated" = "#1f78b4"
+    "Healthy Control" = "#F08080",
+    "Treated PMS"     = "#00BFFF",
+    "Untreated PMS"   = "#FF69B4"
   )) +
+  scale_y_continuous(expand = expansion(mult = c(0.1, 0.1))) +
   labs(
     x = axis_labels[1],
-    y = axis_labels[2], 
+    y = axis_labels[2],
     color = "Treatment Status"
   ) +
-  theme_classic() +
+  theme_classic(base_size = 16) +
   theme(
     legend.position = "right",
-    axis.title = element_text(size = 24),
-    axis.text = element_text(size = 22),
-    legend.title = element_text(size = 22),
-    legend.text = element_text(size = 20)
+    axis.text.x = element_text(size = 22),
+    axis.text.y = element_text(size = 22),
+    axis.title = element_text(size = 26),
+    plot.title = element_text(size = 26, hjust = 0.5),
+    legend.title = element_text(size = 24),
+    legend.text = element_text(size = 22),
+    axis.line = element_line(linewidth = 1.2),
+    axis.ticks = element_line(linewidth = 1.2)
   )
-
 final_fig1B
 
-#ggsave("LabNotebook/Chap4/final_fig1B.png", final_fig1B, height = 8, width = 12)
+ggsave("LabNotebook/Chap4/new_final_fig1B.png", final_fig1B, height = 8, width = 14)
