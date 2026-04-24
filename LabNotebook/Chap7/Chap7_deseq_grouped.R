@@ -89,10 +89,10 @@ res_tb_untreated_tax     <- add_taxonomy(res_tb_untreated, ms_tb_untreated)
 
 ## Create Volcano Plots ##
 
-#Volcano plot with fc cutoff of 3.5
-make_volcano_refined <- function(res_df, title_text, top_n_labels = 5) {
+#Volcano plot with fc cutoff of 4
+make_volcano_refined <- function(res_df, title_text, top_n_labels = 10) {
   
-  fc_cutoff <- 3
+  fc_cutoff <- 4
   padj_cutoff <- 1e-4
   
   large_label <- paste0("Large Effect (|log2FC| > ", fc_cutoff, ")")
@@ -156,15 +156,16 @@ volcano_tb <- make_volcano_refined(
 volcano_tb
 
 
-#Volcano plot with fc cutoff of 4
+#Volcano plot with fc cutoff of 3
 make_volcano_strict <- function(res_df, title_text, top_n_labels = 10) {
   
   fc_cutoff <- 3
   padj_cutoff <- 1e-4
   
   large_label <- paste0("Large Effect (|log2FC| > ", fc_cutoff, ")")
-  moderate_label <- "Moderate Effect (|log2FC| > 1)"
-  small_label <- "Small Effect"
+  moderate_label <- paste0("Moderate Effect (1 < |log2FC| \u2264 ", fc_cutoff, ")")
+  small_label <- paste0("Small Effect (|log2FC| \u2264 1)")
+  ns_label <- "Not Significant"
   
   df <- res_df %>%
     filter(!is.na(padj)) %>%
@@ -178,6 +179,13 @@ make_volcano_strict <- function(res_df, title_text, top_n_labels = 10) {
       )
     )
   
+  df$Significance <- factor(df$Significance,
+                            levels = c(large_label, moderate_label, small_label, ns_label)
+  )
+  
+  y_max <- ceiling(max(df$neg_log10_padj, na.rm = TRUE))
+  if (!is.finite(y_max)) y_max <- 10
+  
   label_df <- df %>%
     filter(Significance == large_label) %>%
     arrange(padj) %>%
@@ -189,6 +197,7 @@ make_volcano_strict <- function(res_df, title_text, top_n_labels = 10) {
                linetype = "dashed", 
                color = "gray40",
                linewidth = 0.5) +
+    geom_vline(xintercept = c(-1, 1), linetype = "dotted", color = "gray50", linewidth = 0.5) +
     geom_hline(yintercept = -log10(padj_cutoff), 
                linetype = "dashed", 
                color = "gray40",
@@ -207,13 +216,22 @@ make_volcano_strict <- function(res_df, title_text, top_n_labels = 10) {
       segment.color = "gray50"
     ) +
     scale_color_manual(values = c(
-      setNames("red", large_label),      
-      setNames("orange", moderate_label),   
-      setNames("blue", small_label),      
-      "Not Significant" = "gray70"
+      setNames("red", large_label),
+      setNames("orange", moderate_label),
+      setNames("blue", small_label),
+      setNames("gray70", ns_label)
     )) +
-    scale_x_continuous(expand = expansion(mult = 0.1)) +
-    scale_y_continuous(limits = c(0, NA), expand = expansion(mult = c(0, 0.05))) +
+    scale_x_continuous(
+      breaks = c(-6, -3, -1, 0, 1, 3, 6),
+      minor_breaks = NULL,
+      expand = expansion(mult = 0.1)
+    ) +
+    scale_y_continuous(
+      breaks = seq(0, ceiling(max(df$neg_log10_padj)), by = 2),
+      minor_breaks = NULL,
+      limits = c(0, NA),
+      expand = expansion(mult = c(0, 0.05))
+    ) +
     labs(
       x = "log2 Fold Change",
       y = "-log10(adjusted p-value)",

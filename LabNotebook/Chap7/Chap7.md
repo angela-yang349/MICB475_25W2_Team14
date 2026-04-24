@@ -12,14 +12,15 @@ To identify differentially abundant bacterial taxa between treated and untreated
   * Filtered raw phyloseq data to remove RRMS samples and RRMS-associated controls (rarefied data yielded zero significant results)
   * Used gene-wise dispersion estimation (manual approach) due to data variability
   * Performed three pairwise comparisons: Treated vs Untreated PMS, Treated vs Control, Untreated vs Control
+  * Also performed pairwise comparisons with treatments grouped by mechanism: Immunomodulators and T/B cell therapies
  
- * PiCRUST2
-   * Extracted the metadata and grouped treatments into immunomodulators, T/B cell and untreated
-   * Loaded KO table
-   * Filtered for immunomodulators and then T and B cell
-   * ran DAA using LinDA for T and B cell vs untreated and immunomodulators vs untreated
-   * annotated DAA for immunomodulators and T and B cell
-   * plotted results
+* PiCRUST2
+  * Extracted the metadata and grouped treatments into immunomodulators, T/B cell and untreated
+  * Loaded KO table
+  * Filtered for immunomodulators and then T and B cell
+  * ran DAA using LinDA for T and B cell vs untreated and immunomodulators vs untreated
+  * annotated DAA for immunomodulators and T and B cell
+  * plotted results
 
 ## Visualizations:
 ### DESeq2 analysis (volcano plots):
@@ -32,7 +33,7 @@ To identify differentially abundant bacterial taxa between treated and untreated
 
 ![Volcano Plot: Immunomodulators vs Untreated PMS](deseq2_3cutoff_volcano_immuno_vs_untreated.png)
 
-![Volcano Plot: Immunomodulators vs Untreated PMS](deseq2_3cutoff_volcano_TBcell_vs_untreated.png)
+![Volcano Plot: T/B cell therapy vs Untreated PMS](deseq2_3cutoff_volcano_TBcell_vs_untreated.png)
 
 ### PiCRUST2 analysis:
 * Immunomodulators vs Untreated had 7 significant pathways

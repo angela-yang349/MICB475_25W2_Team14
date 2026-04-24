@@ -16,6 +16,7 @@ To evaluate whether distinct disease-modifying therapies are significantly assoc
   * A second PCoA plot excluding healthy controls was generated to better visualize differences among PMS treatment types
   * If PERMANOVA was significant (p < 0.05), pairwise comparisons were conducted between each treatment type and untreated PMS, between untreated PMS and healthy controls, and between each treatment type and healthy controls
   * P-values were adjusted using FDR correction, with comparisons considered significant if p_FDR < 0.05
+* All above analysis were also re-ran on the treatments grouped by mechanism: Immunomodulators and T/B cell therapies
 
 ## Visualizations:
 
