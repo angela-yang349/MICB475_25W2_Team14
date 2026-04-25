@@ -212,23 +212,19 @@ samp_dat_wdiv$treatment_status <- factor(
 final_fig1A <- ggplot(samp_dat_wdiv, aes(x = treatment_status, y = Shannon)) +
   stat_boxplot(geom = "errorbar", width = 0.2) +
   geom_boxplot(aes(fill = treatment_status)) +
-  scale_fill_manual(values = c(
-    "Healthy Control" = "#e31a1c",
-    "Treated PMS" = "#33a02c",
-    "Untreated PMS" =  "#1f78b4"
-  )) +
-  labs(x = "Treatment Status", y = "Shannon Diversity Index") +
+  scale_fill_brewer(palette = "Set2")+
+  labs(x = NULL, y = "Shannon Diversity Index") +
   ylim(0.4, 2.1) +
-  theme_classic(base_size = 16) +  # increase overall base font
+  theme_classic(base_size = 18) +  # increase overall base font
   theme(
-    axis.title = element_text(size = 14),   # axis labels
-    axis.text = element_text(size = 11),    # tick labels
+    axis.title = element_text(size = 18),   # axis labels
+    axis.text = element_text(size = 16),    # tick labels
     legend.position = "none"
   )
 
 final_fig1A
 
-# ggsave("LabNotebook/Chap4/new_final_fig1A.png", final_fig1A, height = 8, width = 14)
+# ggsave("LabNotebook/Chap4/updated_final_fig1A.png", final_fig1A, height = 8, width = 14)
 
 
 ### Figure 1B - Beta diversity using treatment status
@@ -250,13 +246,9 @@ sample_data(ms_rare_no_RRMS_ctrl)$treatment_status <- factor(
 final_fig1B <- plot_ordination(ms_rare_no_RRMS_ctrl, 
                                        treatment_wunifrac_pcoa, 
                                        color = "treatment_status") +
+  scale_color_brewer(palette = "Set2")+
   geom_point(size = 2) +
   stat_ellipse(type = "norm", size = 0.8) +   # solid ellipse lines
-  scale_color_manual(values = c(
-    "Healthy Control" = "#e31a1c",
-    "Treated PMS" = "#33a02c",
-    "Untreated PMS" = "#1f78b4"
-  )) +
   labs(
     x = axis_labels[1],
     y = axis_labels[2], 
@@ -265,10 +257,12 @@ final_fig1B <- plot_ordination(ms_rare_no_RRMS_ctrl,
   theme_classic() +
   theme(
     legend.position = "right",
-    axis.title = element_text(size = 14),
-    axis.text = element_text(size = 12)
+    legend.title = element_text(size = 16),
+    legend.text = element_text(size = 14),
+    axis.title = element_text(size = 18),
+    axis.text = element_text(size = 16)
   )
 
 final_fig1B
 
-# ggsave("LabNotebook/Chap4/new_final_fig1B.png", final_fig1B, height = 8, width = 14)
+# ggsave("LabNotebook/Chap4/updated_final_fig1B.png", final_fig1B, height = 8, width = 14)
