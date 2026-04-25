@@ -215,10 +215,10 @@ final_fig1A <- ggplot(samp_dat_wdiv, aes(x = treatment_status, y = Shannon)) +
   scale_fill_brewer(palette = "Set2")+
   labs(x = NULL, y = "Shannon Diversity Index") +
   ylim(0.4, 2.1) +
-  theme_classic(base_size = 18) +  # increase overall base font
+  theme_classic(base_size = 28) +  # increase overall base font
   theme(
-    axis.title = element_text(size = 18),   # axis labels
-    axis.text = element_text(size = 16),    # tick labels
+    axis.title = element_text(size = 28),   # axis labels
+    axis.text = element_text(size = 26),    # tick labels
     legend.position = "none"
   )
 
@@ -257,10 +257,10 @@ final_fig1B <- plot_ordination(ms_rare_no_RRMS_ctrl,
   theme_classic() +
   theme(
     legend.position = "right",
-    legend.title = element_text(size = 16),
-    legend.text = element_text(size = 14),
-    axis.title = element_text(size = 18),
-    axis.text = element_text(size = 16)
+    legend.title = element_text(size = 26),
+    legend.text = element_text(size = 24),
+    axis.title = element_text(size = 28),
+    axis.text = element_text(size = 26)
   )
 
 final_fig1B
