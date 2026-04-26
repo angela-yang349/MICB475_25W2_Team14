@@ -22,7 +22,7 @@ To evaluate whether distinct disease-modifying therapies are significantly assoc
 
 ### Alpha diversity untreated PMS vs. each treatment type (with controls)
 
-![treatment_types_shannon_plot](corrected_treatment_types_shannon_plot.png)
+![treatment_types_shannon_plot](updated_final_figS2A.png)
 
 No significant differences in alpha diversity (Shannon Index) were detected across individual treatment types, including untreated and healthy control participants (Kruskal–Wallis, χ² = 11.36, df = 6, p = 0.0778), indicating that within-sample microbial diversity did not vary significantly by treatment type.
 
