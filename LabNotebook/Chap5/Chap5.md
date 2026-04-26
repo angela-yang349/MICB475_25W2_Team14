@@ -45,8 +45,8 @@ Pairwise PERMANOVA comparisons revealed that several treatment groups showed nom
   * Immunomodulators (Glatiramer acetate, Interferon (IFN), Dimethyl fumarate)  
   * T/B cell treatments (Ocrevus (rituxan), Fingolimod)
 
-![grouped_treatments_shannon_plot](grouped_treatments_shannon_plot.png)
+![grouped_treatments_shannon_plot](final_fig1C.png)
 
-![grouped_treatments_beta_pcoa_with_ellipses](grouped_treatments_beta_pcoa_with_ellipses.png)
+![grouped_treatments_beta_pcoa_with_ellipses](final_fig1D.png)
 
 Pairwise PERMANOVA results: [grouped_treatments_pairwise_permanova](/grouped_treatments_pairwise_permanova.csv)
