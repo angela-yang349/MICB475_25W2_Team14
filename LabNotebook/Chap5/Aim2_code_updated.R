@@ -295,7 +295,7 @@ final_figS2A <- ggplot(Aim2_alpha_samp_and_richness, aes(x = treatments, y = Sha
   stat_boxplot(geom = "errorbar", width = 0.2) +
   geom_boxplot(aes(fill = treatments)) +
   scale_fill_manual(values = c(
-    "Control" = "#e41a1c",
+    "Healthy Control" = "#e41a1c",
     "Dimethyl fumarate" = "#377eb8",
     "Fingolimod" = "#4daf4a",
     "Glatiramer acetate" = "#984ea3",
@@ -317,27 +317,6 @@ final_figS2A <- ggplot(Aim2_alpha_samp_and_richness, aes(x = treatments, y = Sha
 
 final_figS2A
 
-#New alpha plot
-final_figS2A <- ggplot(Aim2_alpha_samp_and_richness, aes(x = treatments, y = Shannon)) +
-  stat_boxplot(geom = "errorbar", width = 0.2) +
-  geom_boxplot(aes(fill = treatments)) +
-  labs(x = "Treatment", y = "Shannon Diversity Index") +
-  ylim(0.0, 2.5) +
-  theme_classic(base_size = 16) +
-  theme(
-    axis.title = element_text(size = 24),
-    axis.title.y = element_text(margin = margin(r = 15)),
-    axis.text = element_text(size = 20),
-    axis.text.x = element_text(angle = 45, hjust = 1),
-    plot.margin = margin(t = 10, r = 20, b = 10, l = 20),
-    legend.position = "none"
-  )
-
-final_figS2A
-
-#ggsave("LabNotebook/Chap5/updated_final_figS2A.png", final_figS2A, height = 8, width = 12)
-
-
 ### Figure S2B - Beta diversity using individual treatments
 # Calculate percent variance
 percent_var2 <- pms_treatments_wunifrac_pcoa$values$Relative_eig[1:2] * 100
@@ -356,15 +335,7 @@ final_figS2B <- plot_ordination(
   geom_point(size = 2) +
   scale_y_continuous(breaks = seq(-0.5, 0.5, by = 0.25)) +
   stat_ellipse(aes(color = treatments), type = "norm", size = 0.8) +
-  scale_color_manual(values = c(
-    "Control" = "#e41a1c",
-    "Dimethyl fumarate" = "#377eb8",
-    "Fingolimod" = "#4daf4a",
-    "Glatiramer acetate" = "#984ea3",
-    "Interferon" = "#ff7f00",
-    "Ocrevus (Rituxan)" = "#999999",
-    "Untreated" = "#17334f"
-  )) +
+  scale_fill_brewer(palette = "Set2")+
   labs(
     x = axis_labels[1],
     y = axis_labels[2], 
@@ -373,15 +344,22 @@ final_figS2B <- plot_ordination(
   theme_classic() +
   theme(
     legend.position = "right",
-    axis.title = element_text(size = 24),
-    axis.text = element_text(size = 22),
-    legend.title = element_text(size = 22),
-    legend.text = element_text(size = 20)
+    axis.title = element_text(size = 32),
+    axis.text = element_text(size = 30),
+    axis.text.x = element_text(angle = 30, hjust = 1),
+    legend.title = element_text(size = 30),
+    legend.text = element_text(size = 28)
   )
 
 final_figS2B
 
+
+###UPDATED PLOTS BELOW
+
 #changing labels and order
+
+ms_rare_no_RRMS_ctrl$treatments[is.na(ms_rare_no_RRMS_ctrl$treatments)] <- "Control"
+
 sample_data(ms_rare_no_RRMS_ctrl)$treatments <- recode(
   sample_data(ms_rare_no_RRMS_ctrl)$treatments,
   "Control" = "Healthy Control",
@@ -405,6 +383,38 @@ sample_data(ms_rare_no_RRMS_ctrl)$treatments <- factor(
     "Untreated PMS"
   )
 )
+
+#New alpha plot
+final_figS2A <- ggplot(Aim2_alpha_samp_and_richness, aes(x = treatments, y = Shannon)) +
+  stat_boxplot(geom = "errorbar", width = 0.2) +
+  geom_boxplot(aes(fill = treatments)) +
+  scale_fill_brewer(palette = "Set2")+
+  scale_fill_manual(values = c(
+    "Healthy Control" = "#66C2A5FF", 
+    "Dimethyl Fumarate" = "#6A7F57", 
+    "Glatiramer Acetate" = "#E5C494FF", 
+    "Interferon" = "#E78AC3FF", 
+    "Ocrevus/Rituxan" ="#A6D854FF", 
+    "Fingolimod" = "#FFD92FFF",
+    "Untreated PMS" = "#8DA0CBFF"
+  )) +
+  labs(x = "Treatment", y = "Shannon Diversity Index") +
+  ylim(0.0, 2.5) +
+  theme_classic(base_size = 16) +
+  theme(
+    axis.title = element_text(size = 24),
+    axis.title.y = element_text(margin = margin(r = 15)),
+    axis.text = element_text(size = 20),
+    axis.text.x = element_text(angle = 30, hjust = 1),
+    plot.margin = margin(t = 10, r = 20, b = 10, l = 20),
+    legend.position = "none"
+  )
+
+final_figS2A
+
+#ggsave("LabNotebook/Chap5/updated_final_figS2A.png", final_figS2A, height = 8, width = 12)
+
+
 
 #New PcoA plot
 percent_var2 <- treatment_types_wunifrac_pcoa$values$Relative_eig[1:2] * 100
@@ -434,8 +444,8 @@ final_figS2B <- plot_ordination(
   theme_classic() +
   theme(
     legend.position = "right",
-    axis.title = element_text(size = 24),
-    axis.text = element_text(size = 22),
+    axis.title = element_text(size = 32),
+    axis.text = element_text(size = 30),
     legend.title = element_text(size = 22),
     legend.text = element_text(size = 20)
   )

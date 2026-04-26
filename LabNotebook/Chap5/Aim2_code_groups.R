@@ -67,9 +67,9 @@ mechanism_alpha_plot <- plot_richness(ms_rare_no_RRMS_ctrl,
 
 mechanism_alpha_plot
 
-ggsave(paste0("LabNotebook/Chap5/new_grouped_treatments_shannon_plot.png"),
-       mechanism_alpha_plot,
-       height = 5, width = 8)
+# ggsave(paste0("LabNotebook/Chap5/new_grouped_treatments_shannon_plot.png"),
+#       mechanism_alpha_plot,
+#       height = 5, width = 8)
 
 ## Statistical test - Kruskal-Wallis rank sum test
 
@@ -122,11 +122,11 @@ mechanism_beta_plot <- plot_ordination(ms_rare_no_RRMS_ctrl,
   theme(legend.position = "right")
 mechanism_beta_plot
 
-ggsave(paste0("LabNotebook/Chap5/grouped_treatments_beta_pcoa.png"), 
-       mechanism_beta_plot, 
-       width = 10, 
-       height = 7, 
-       dpi = 300)
+# ggsave(paste0("LabNotebook/Chap5/grouped_treatments_beta_pcoa.png"), 
+#       mechanism_beta_plot, 
+#       width = 10, 
+#       height = 7, 
+#       dpi = 300)
 
 # PERMANOVA test
 mechanism_metadata_df <- data.frame(sample_data(ms_rare_no_RRMS_ctrl))
@@ -226,11 +226,11 @@ mechanism_beta_plot_ellipses <- plot_ordination(ms_rare_no_RRMS_ctrl,
         plot.caption = element_text(hjust = 0, size = 9))
 mechanism_beta_plot_ellipses
 
-ggsave("LabNotebook/Chap5/grouped_treatments_beta_pcoa_with_ellipses.png", 
-       mechanism_beta_plot_ellipses, 
-       width = 11, 
-       height = 8, 
-       dpi = 300)
+# ggsave("LabNotebook/Chap5/grouped_treatments_beta_pcoa_with_ellipses.png", 
+#       mechanism_beta_plot_ellipses, 
+#       width = 11, 
+#       height = 8, 
+#       dpi = 300)
 
 # Final Figure PCoA plot
 
@@ -284,10 +284,10 @@ mechanism_beta_plot_ellipses
 
 # Final Figure 1C
 group_colors <- c(
-  "Healthy Control"    = "#F08080",  # salmon/coral - same as individual plot
-  "Immunomodulators"   = "#4DBD4D",  # olive green
-  "T/B Cell Therapies" = "#00BFFF",  # cyan/light blue
-  "Untreated PMS"      = "#FF69B4"   # hot pink - same as individual plot
+  "Healthy Control"    = "#66C2A5FF",  # same as individual plot
+  "Immunomodulators"   = "#B3B3B3FF",  
+  "T/B Cell Therapies" = "#D68E4E",  
+  "Untreated PMS"      = "#8DA0CBFF"   # same as individual plot
 )
 
 mechanism_alpha_plot <- plot_richness(ms_rare_no_RRMS_ctrl, 
@@ -301,9 +301,9 @@ mechanism_alpha_plot <- plot_richness(ms_rare_no_RRMS_ctrl,
   geom_point() +
   theme_classic(base_size = 16) +
   theme(
-    axis.text.x = element_text(angle = 45, hjust = 1, size = 24),
-    axis.text.y = element_text(size = 24),
-    axis.title = element_text(size = 26),
+    axis.text.x = element_text(angle = 30, hjust = 1, size = 30),
+    axis.text.y = element_text(size = 30),
+    axis.title = element_text(size = 32),
     plot.title = element_text(size = 26, hjust = 0.5),
     legend.position = "none",
     strip.text = element_blank(),
@@ -313,7 +313,7 @@ mechanism_alpha_plot <- plot_richness(ms_rare_no_RRMS_ctrl,
   )
 mechanism_alpha_plot
 
-ggsave("LabNotebook/Chap5/final_fig1C.png", mechanism_alpha_plot, height = 8, width = 14)
+# ggsave("LabNotebook/Chap5/final_fig1C.png", mechanism_alpha_plot, height = 8, width = 14)
 
 # Final Figure 1D
 
@@ -330,10 +330,10 @@ mechanism_beta_plot <- plot_ordination(ms_rare_no_RRMS_ctrl,
   geom_point(size = 2) +
   stat_ellipse(type = "norm", size = 1.2) +
   scale_color_manual(values = c(
-    "Healthy Control"    = "#F08080",
-    "Immunomodulators"   = "#4DBD4D",
-    "T/B Cell Therapies" = "#00BFFF",
-    "Untreated PMS"      = "#FF69B4"
+    "Healthy Control"    = "#66C2A5FF",  # same as individual plot
+    "Immunomodulators"   = "#B3B3B3FF",  
+    "T/B Cell Therapies" = "#D68E4E",  
+    "Untreated PMS"      = "#8DA0CBFF"   # same as individual plot
   )) +
   scale_y_continuous(expand = expansion(mult = c(0.08, 0.08))) +
   labs(
@@ -344,15 +344,15 @@ mechanism_beta_plot <- plot_ordination(ms_rare_no_RRMS_ctrl,
   theme_classic(base_size = 16) +
   theme(
     legend.position = "right",
-    axis.text.x = element_text(size = 24),
-    axis.text.y = element_text(size = 24),
-    axis.title = element_text(size = 26),
+    axis.text.x = element_text(size = 30),
+    axis.text.y = element_text(size = 30),
+    axis.title = element_text(size = 32),
     plot.title = element_text(size = 26, hjust = 0.5),
-    legend.title = element_text(size = 26),
-    legend.text = element_text(size = 24),
+    legend.title = element_text(size = 30),
+    legend.text = element_text(size = 28),
     axis.line = element_line(linewidth = 1.2),
     axis.ticks = element_line(linewidth = 1.2)
   )
 mechanism_beta_plot
 
-ggsave("LabNotebook/Chap5/final_fig1D.png", mechanism_beta_plot, height = 8, width = 14)
+# ggsave("LabNotebook/Chap5/final_fig1D.png", mechanism_beta_plot, height = 8, width = 14)
