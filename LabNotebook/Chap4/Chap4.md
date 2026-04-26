@@ -21,7 +21,7 @@ To compare the global diversity and compositional structure of the gut microbiom
 ## Visualizations:
 ### PRELIMINARY: Beta diversity SPMS vs PPMS (no controls)
 
-![spms_ppms_wunifrac_pcoa](spms_ppms_wunifrac_pcoa.png)
+![spms_ppms_wunifrac_pcoa](Supplemental_fig1.png)
 
 No significant differences in gut microbiome composition were detected between SPMS and PPMS patients (PERMANOVA, R² = 0.006, F = 0.69, p = 0.700), indicating that these progressive MS subtypes can be combined into a single "PMS" category for subsequent analyses.
 
