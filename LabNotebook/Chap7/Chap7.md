@@ -38,5 +38,5 @@ To identify differentially abundant bacterial taxa between treated and untreated
 ### PiCRUST2 analysis:
 * Immunomodulators vs Untreated had 7 significant pathways
 * T and B cell vs Untreated had 0 significant pathways
-![Immunomodulators vs Untreated PMS Pathways](immuno_vs_untreated_picrust.png)
+![Immunomodulators vs Untreated PMS Pathways](final_fig4.png)
 
