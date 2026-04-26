@@ -28,13 +28,13 @@ No significant differences in gut microbiome composition were detected between S
 
 ### Alpha diversity treated vs untreated PMS (with controls)
 
-![treatment_shannon_boxplot](corrected_treatment_shannon_boxplot.png)
+![treatment_shannon_boxplot](updated_final_fig1A.png)
 
 No significant differences in alpha diversity (Shannon Index) were detected across treatment status groups (Kruskal-Wallis, χ² = 5.51, df = 2, p = 0.064), indicating that treatment categories do not exhibit statistically distinguishable within-sample diversity.
 
 ### Beta diversity treated vs untreated PMS (with controls)
 
-![treatment_wunifrac_pcoa](updated_treatment_wunifrac_pcoa.png)
+![treatment_wunifrac_pcoa](updated_final_fig1B.png)
 
 Treatment status significantly influenced gut microbiome composition (PERMANOVA, R² = 0.008, F = 2.32, p = 0.014), with significant differences detected among healthy controls, treated PMS, and untreated PMS groups.
 Pairwise PERMANOVA comparisons revealed significant unadjusted differences between healthy controls and both untreated PMS (R² = 0.004, F = 2.19, p = 0.041) and treated PMS patients (R² = 0.006, F = 2.77, p = 0.022).
