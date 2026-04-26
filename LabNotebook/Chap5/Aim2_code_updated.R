@@ -400,11 +400,11 @@ final_figS2A <- ggplot(Aim2_alpha_samp_and_richness, aes(x = treatments, y = Sha
   )) +
   labs(x = "Treatment", y = "Shannon Diversity Index") +
   ylim(0.0, 2.5) +
-  theme_classic(base_size = 16) +
+  theme_classic() +
   theme(
-    axis.title = element_text(size = 24),
+    axis.title = element_text(size = 32),
     axis.title.y = element_text(margin = margin(r = 15)),
-    axis.text = element_text(size = 20),
+    axis.text = element_text(size = 30),
     axis.text.x = element_text(angle = 30, hjust = 1),
     plot.margin = margin(t = 10, r = 20, b = 10, l = 20),
     legend.position = "none"
@@ -446,8 +446,8 @@ final_figS2B <- plot_ordination(
     legend.position = "right",
     axis.title = element_text(size = 32),
     axis.text = element_text(size = 30),
-    legend.title = element_text(size = 22),
-    legend.text = element_text(size = 20)
+    legend.title = element_text(size = 30),
+    legend.text = element_text(size = 28)
   )
 
 final_figS2B
