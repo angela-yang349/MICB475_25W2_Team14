@@ -285,8 +285,8 @@ mechanism_beta_plot_ellipses
 # Final Figure 1C
 group_colors <- c(
   "Healthy Control"    = "#66C2A5FF",  # same as individual plot
-  "Immunomodulators"   = "#B3B3B3FF",  
-  "T/B Cell Therapies" = "#D68E4E",  
+  "Immunomodulators"   = "#C97C7C",  
+  "T/B Cell Therapies" = "#B8DE6F",  
   "Untreated PMS"      = "#8DA0CBFF"   # same as individual plot
 )
 
@@ -295,7 +295,6 @@ mechanism_alpha_plot <- plot_richness(ms_rare_no_RRMS_ctrl,
                                       measures = c("Shannon")) +
   aes(fill = .data[[GROUPING]]) +  
   scale_fill_manual(values = group_colors) +
-  xlab("Treatment Mechanism") +
   ylab("Shannon Diversity Index") +
   geom_boxplot() +
   geom_point() +
@@ -331,8 +330,8 @@ mechanism_beta_plot <- plot_ordination(ms_rare_no_RRMS_ctrl,
   stat_ellipse(type = "norm", size = 1.2) +
   scale_color_manual(values = c(
     "Healthy Control"    = "#66C2A5FF",  # same as individual plot
-    "Immunomodulators"   = "#B3B3B3FF",  
-    "T/B Cell Therapies" = "#D68E4E",  
+    "Immunomodulators"   = "#C97C7C",  
+    "T/B Cell Therapies" = "#B8DE6F",  
     "Untreated PMS"      = "#8DA0CBFF"   # same as individual plot
   )) +
   scale_y_continuous(expand = expansion(mult = c(0.08, 0.08))) +

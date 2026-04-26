@@ -356,9 +356,10 @@ final_figS2B
 
 ###UPDATED PLOTS BELOW
 
-#changing labels and order
+unique(sample_data(ms_rare_no_RRMS_ctrl)$treatments)
 
-ms_rare_no_RRMS_ctrl$treatments[is.na(ms_rare_no_RRMS_ctrl$treatments)] <- "Control"
+
+#changing labels and order
 
 sample_data(ms_rare_no_RRMS_ctrl)$treatments <- recode(
   sample_data(ms_rare_no_RRMS_ctrl)$treatments,
@@ -388,7 +389,6 @@ sample_data(ms_rare_no_RRMS_ctrl)$treatments <- factor(
 final_figS2A <- ggplot(Aim2_alpha_samp_and_richness, aes(x = treatments, y = Shannon)) +
   stat_boxplot(geom = "errorbar", width = 0.2) +
   geom_boxplot(aes(fill = treatments)) +
-  scale_fill_brewer(palette = "Set2")+
   scale_fill_manual(values = c(
     "Healthy Control" = "#66C2A5FF", 
     "Dimethyl Fumarate" = "#6A7F57", 
