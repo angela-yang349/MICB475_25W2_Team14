@@ -25,7 +25,7 @@
 * [Chap.1](/LabNotebook/Chap1/Chap1.md) - Data Pre-processing
 * [Chap.2](/LabNotebook/Chap2/Chap2.md) - QIIME2 pipeline
 * [Chap.3](/LabNotebook/Chap3/Chap3.md) - Phyloseq and Rarecurve
-* [Chap.4](/LabNotebook/Chap4/Chap4.md) - Aim 1
-* [Chap.5](/LabNotebook/Chap5/Chap5.md) - Aim 2
-* [Chap.6](/LabNotebook/Chap6/Chap6.md) - Aim 3
-* [Chap.7](/LabNotebook/Chap7/Chap7.md) - Aim 4
+* [Chap.4](/LabNotebook/Chap4/Chap4.md) - Aim 1: Alpha and beta diversity comparisons between healthy controls, treated PMS patients, and untreated PMS patients
+* [Chap.5](/LabNotebook/Chap5/Chap5.md) - Aim 2: Alpha and beta diversity comparisons between healthy controls, individual treatments or grouped treatments, and untreated PMS patients.
+* [Chap.6](/LabNotebook/Chap6/Chap6.md) - Aim 3: Indicator Species/Taxa Analysis
+* [Chap.7](/LabNotebook/Chap7/Chap7.md) - Aim 4: Characterizing taxonomic or and functional differences in the gut microbiome across PMS treatment types
