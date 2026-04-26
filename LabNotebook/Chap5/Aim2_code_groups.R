@@ -295,7 +295,9 @@ mechanism_alpha_plot <- plot_richness(ms_rare_no_RRMS_ctrl,
                                       measures = c("Shannon")) +
   aes(fill = .data[[GROUPING]]) +  
   scale_fill_manual(values = group_colors) +
-  ylab("Shannon Diversity Index") +
+  labs(
+    x = NULL,
+    y = "Shannon Diversity Index") +
   geom_boxplot() +
   geom_point() +
   theme_classic(base_size = 16) +
