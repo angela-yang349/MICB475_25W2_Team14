@@ -58,6 +58,9 @@ Shared between lymphocyte and immunomodulators:
 
 ![MS Venn Diagram 3 Treatment Groups](venn_3_groups.png)
 
+## Final visualization:
+![MS Venn Diagram 2 Treatment Groups](presentation_venn_core_microbiome.png)
+
 ### Indicator species analysis:
 Stat values must be 0.7 or above and indicator genuses should only belong to one group in order to be an indicator.
 
