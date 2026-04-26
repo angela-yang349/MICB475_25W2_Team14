@@ -31,12 +31,7 @@ Kruskal-Wallis rank sum test results: [kruskal_treatments](/corrected_kruskal_tr
 
 ### Beta diversity untreated PMS vs. each treatment type (with controls)
 
-![treatment_types_wunifrac_pcoa_with_controls](updated_treatment_types_wunifrac_pcoa_with_controls.png)
-
-
-### Beta diversity untreated PMS vs. each treatment type (no controls)
-
-![treatment_types_wunifrac_pcoa_pms_only](updated_treatment_types_wunifrac_pcoa_pms_only.png)
+![treatment_types_wunifrac_pcoa_with_controls](updated_final_figS2B.png)
 
 * Overall PERMANOVA results: [treatment_types_permanova_results](/updated_treatment_types_permanova_results.csv) - after RRMS_household_controls were removed
 
